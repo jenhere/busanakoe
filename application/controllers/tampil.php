@@ -71,7 +71,7 @@ class Tampil extends CI_Controller {
     }
     public function keInputProduct(){ 
         $this->load->view('header_admin');
-        $this->load->view('slider');
+        //$this->load->view('slider');
         $this->load->view('v_section_admin_menu');
         $this->load->view('v_section_admin_inputPro');
         $this->load->view('footer');
@@ -108,9 +108,13 @@ class Tampil extends CI_Controller {
         }
     }
 
+    public function do_delproduct(){
+        echo "delete product";
+    }
+
     public function kePemesanan(){
         $this->load->view('header_admin');
-        $this->load->view('slider');
+        //$this->load->view('slider');
         $this->load->view('v_section_admin_menu');
         $this->load->view('v_section_admin_pemesanan');
         $this->load->view('footer');
@@ -136,7 +140,7 @@ class Tampil extends CI_Controller {
         //////END OF PAGINATION/////////////
 
         $this->load->view('header_admin');
-        $this->load->view('slider');
+        //$this->load->view('slider');
         $this->load->view('v_section_admin_menu');
         $this->load->view('v_section_admin_dataPro', $data);
         $this->load->view('footer');
@@ -161,14 +165,14 @@ class Tampil extends CI_Controller {
         //////END OF PAGINATION/////////////
 
         $this->load->view('header_admin');
-        $this->load->view('slider');
+        //$this->load->view('slider');
         $this->load->view('v_section_admin_menu');
         $this->load->view('v_section_admin_dataPel', $data);
         $this->load->view('footer');
     }
     public function keFormUpdate(){
         $this->load->view('header_admin');
-        $this->load->view('slider');
+        //$this->load->view('slider');
         $this->load->view('v_section_admin_menu');
         $this->load->view('v_section_admin_updateForm');
         $this->load->view('footer');
