@@ -6,34 +6,34 @@
 					<div class="container">
 						        <div class="row col-md-10  custyle">
 						            <table class="table table-striped custab">
-						            <thead>
-						           
-						                <tr>
-						                    <th>Kode Produk</th>
-						                    <th>Nama Produk</th>
-						                    <th>Kategori</th>
-						                    <th>Harga Produk</th>
-						                    <th>Gambar</th>
-						                    <th>Deskripsi</th>
-						                    <th>Stok</th>
-						                    <th class="text-center">Action</th>
-						                </tr>
-						            </thead>
-						            <!--dijadiakn php dan hubungkan ke database-->
-						                    <tr>
-						                        <td>1</td>
-						                        <td>Busana Muslim</td>
-						                        <td>Wanita</td>
-						                        <td>Rp.35.000</td>
-						                        <td>GAMBAR</td>
-						                        <td>Bahan terbuat dari katun dan sangat bagus dari Indian expore
-						                        Bahan terbuat dari katun dan sangat bagus dari Indian expore
-						                        Bahan terbuat dari katun dan sangat bagus dari Indian expore Bahan terbuat dari katun dan sangat bagus dari Indian exporeBahan terbuat dari katun dan sangat bagus dari Indian exporeBahan terbuat dari katun dan sangat bagus dari Indian expore</td>
-						                        <td>4</td>
-						                        <td class="text-center">
-						                        <a class='btn btn-info btn-xs' href="<?php echo site_url()."/tampil/keFormUpdate";?>"><span class="glyphicon glyphicon-edit"></span> Edit</a> 
-						                        <a href="#" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-remove"></span> Del</a></td>
-						                    </tr>
+							            <thead>
+							           
+							                <tr>
+							                    <th>Kode Produk</th>
+							                    <th>Nama Produk</th>
+							                    <th>Kategori</th>
+							                    <th>Harga Produk</th>
+							                    <th>Gambar</th>
+							                    <th>Deskripsi</th>
+							                    <th>Stok</th>
+							                    <th class="text-center">Action</th>
+							                </tr>
+							            </thead>
+
+					            		<?php foreach($products as $product){ ?>
+					                    <tr>
+					                        <td><?=$product->kode_produk?></td>
+					                        <td><?=$product->nama_produk?></td>
+					                        <td><?=$product->kategori?></td>
+					                        <td>Rp. <?=$product->harga_produk?></td>
+					                        <td><img src="<?php echo base_url('upload/'.$product->gambar) ?>" alt="" width="268" height="249" /></td>
+					                        <td><?=$product->deskripsi?></td>
+					                        <td><?=$product->stok?></td>
+					                        <td class="text-center">
+					                        <a class='btn btn-info btn-xs' href="<?php echo site_url()."/tampil/keFormUpdate";?>"><span class="glyphicon glyphicon-edit"></span> Edit</a> 
+					                        <a href="#" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-remove"></span> Del</a></td>
+					                    </tr>
+					                    <?php }; ?>	
 						            </table>
 						        </div>
 						    </div>	
