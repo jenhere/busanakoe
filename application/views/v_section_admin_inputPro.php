@@ -6,12 +6,12 @@
 						<h2 class="title text-center">Tambah Produk</h2>	
 						<!--Form input barang-->
 							<div class="container signup-form" style="margin: 10px;">
-							    <form role="form" action="#" method="post" enctype="multipart/form-data" >
+							    <form role="form" action="<?php echo site_url('tampil/do_addproduct')?>" method="post" enctype="multipart/form-data" >
 
 							        <div class="form-group">
 							          	<div class="col-md-2"><label for="kode_produk" >Kode Produk</label></div>
 							            <div class="col-md-6">
-							                <input type="text" class="form-control" nama="kode_produk" placeholder="Masukkan Kode Produk">
+							                <input type="text" class="form-control" name="kode_produk" placeholder="Masukkan Kode Produk">
 							            </div> 
 							            <div class="col-md-12"></div>
 							        </div>
@@ -19,7 +19,7 @@
 							        <div class="form-group">
 							         	<div class="col-md-2"><label for="nama_produk">Nama Produk</label></div>
 							            <div class="col-md-6">
-							                  <input type="text" class="form-control" nama="nama_produk" placeholder="Masukkan Nama Produk">
+							                  <input type="text" class="form-control" name="nama_produk" placeholder="Masukkan Nama Produk">
 							            </div>
 							            <div class="col-md-12"></div>
 							        </div>
@@ -40,7 +40,7 @@
 							        <div class="form-group">
 							        	<div class="col-md-2"><label for="harga_produk">Harga Produk </label></div>
 							            <div class="col-md-6">
-							                <input type="text" class="form-control" nama="harga_produk" placeholder="Masukkan Harga Produk">
+							                <input type="text" class="form-control" name="harga_produk" placeholder="Masukkan Harga Produk">
 							            </div>
 							            <div class="col-md-12"></div>
 							        </div>
@@ -57,7 +57,7 @@
 							        <div class="form-group">
 							            <div class="col-md-2"><label for="deskripsi">Deskripsi</label></div>
 							            <div class="col-md-6">
-							                <input type="text" class="form-control" nama="deskripsi" placeholder="Deskripsi Produk">
+							                <input type="text" class="form-control" name="deskripsi" placeholder="Deskripsi Produk">
 							            </div>
 							            <div class="col-md-12">
 							         </div>
@@ -65,7 +65,7 @@
 							        <div class="form-group">
 							            <div class="col-md-2"><label for="stok">Stok</label></div>
 							            <div class="col-md-6">
-							                <input type="text" class="form-control" nama="stok" placeholder="Stok Produk">
+							                <input type="text" class="form-control" name="stok" placeholder="Stok Produk">
 							            </div>
 							            <div class="col-md-12">
 							        </div>

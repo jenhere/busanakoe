@@ -59,7 +59,9 @@ class Tampil extends CI_Controller {
     }
 
     public function do_addproduct(){//insert produk 
+        //if(isset(var))
         $target = "upload/".basename($_FILES['uploadimage']['name']);
+
         $kode_produk= $_POST['kode_produk'];
         $nama_produk = $_POST['nama_produk'];
         $kategori = $_POST['kategori'];
@@ -80,7 +82,7 @@ class Tampil extends CI_Controller {
         $res = $this->mymodel->masukkan('produk', $data_insert);
 
         if($res>=1 && move_uploaded_file($_FILES['uploadimage']['tmp_name'] , $target)){
-            header("Location: http://localhost/busanakoe/index.php/tampil/product_adm");
+            header("Location: http://localhost/busanakoe/index.php/tampil/keInputProduct");
             exit();
         }else{
             echo "<h2>Tambah produk gagal</h2>";
