@@ -46,7 +46,7 @@
 										<div class="product-overlay">
 											<div class="overlay-content">
 												<h2><?=$product->harga_produk?></h2>
-												<p><?=$product->kode_produk?></p>
+												<p><?=$product->nama_produk?></p>
 												<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
 											</div>
 										</div>
