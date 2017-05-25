@@ -7,17 +7,17 @@
 						<div class="panel-group category-products" id="accordian"><!--category-productsr-->
 							<div class="panel panel-default">
 								<div class="panel-heading">
-									<h4 class="panel-title"><a href="#">Pria</a></h4>
+									<h4 class="panel-title"><a href="<?php echo site_url()."/tampil/keVhomekat/".'pria';?>">Pria</a></h4>
 								</div>
 							</div>
 							<div class="panel panel-default">
 								<div class="panel-heading">
-									<h4 class="panel-title"><a href="#">Wanita</a></h4>
+									<h4 class="panel-title"><a href="<?php echo site_url()."/tampil/keVhomekat/".'wanita';?>">Wanita</a></h4>
 								</div>
 							</div>
 							<div class="panel panel-default">
 								<div class="panel-heading">
-									<h4 class="panel-title"><a href="#">anak-anak</a></h4>
+									<h4 class="panel-title"><a href="<?php echo site_url()."/tampil/keVhomekat/".'aksesoris';?>">anak-anak</a></h4>
 								</div>
 							</div>
 						</div><!--/category-products-->
