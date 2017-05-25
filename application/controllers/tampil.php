@@ -128,8 +128,6 @@ class Tampil extends CI_Controller {
         //$data['products']['gambar'] = 
         $data2 = $this->db->get('produk');
 
-        /////////PAGINATION////////////
-
         $config['base_url'] = 'http://localhost/index.php/tampil/index/';
         $config['total_rows'] = $data2->num_rows();
         $config['per_page'] = 6;
