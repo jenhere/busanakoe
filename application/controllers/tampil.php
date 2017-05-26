@@ -28,7 +28,7 @@ class Tampil extends CI_Controller {
         $this->load->view('v_section', $data);
         $this->load->view('footer');
 	}
-    public function keVhomekat($ktgr){
+    public function keVhomekat_umum($ktgr){
         /////PAGINATION/////////
         $this->load->library('pagination');
         $data['products'] = $this->mymodel->getProd($ktgr);
@@ -47,6 +47,44 @@ class Tampil extends CI_Controller {
         $this->load->view('v_section', $data);
         $this->load->view('footer');
     }
+    public function keVhomekat_admin($ktgr){
+        /////PAGINATION/////////
+        $this->load->library('pagination');
+        $data['products'] = $this->mymodel->getProd($ktgr);
+        //$this->db->where('kategori','pria');
+        $data2 = $this->db->get_where('produk', array('kategori' => $ktgr));
+        /////////PAGINATION////////////
+        $config['base_url'] = 'http://localhost/index.php/tampil/index/';
+        $config['total_rows'] = $data2->num_rows();
+        $config['per_page'] = 6;
+        $this->pagination->initialize($config);
+        echo $this->pagination->create_links();
+        //////END OF PAGINATION/////////////
+
+        $this->load->view('header_admin');
+        $this->load->view('slider');
+        $this->load->view('v_section_admin', $data);
+        $this->load->view('footer');
+    }
+    public function keVhomekat_pel($ktgr){
+        /////PAGINATION/////////
+        $this->load->library('pagination');
+        $data['products'] = $this->mymodel->getProd($ktgr);
+        //$this->db->where('kategori','pria');
+        $data2 = $this->db->get_where('produk', array('kategori' => $ktgr));
+        /////////PAGINATION////////////
+        $config['base_url'] = 'http://localhost/index.php/tampil/index/';
+        $config['total_rows'] = $data2->num_rows();
+        $config['per_page'] = 6;
+        $this->pagination->initialize($config);
+        echo $this->pagination->create_links();
+        //////END OF PAGINATION/////////////
+
+        $this->load->view('header_pelanggan');
+        $this->load->view('slider');
+        $this->load->view('v_section', $data);
+        $this->load->view('footer');
+    }
 	public function login(){
         $this->load->view('vlogin');
     }
@@ -59,31 +97,24 @@ class Tampil extends CI_Controller {
 
          /////PAGINATION/////////
         $this->load->library('pagination');
-
         $data['products'] = $this->mymodel->getAll('produk');
         //$data['products']['gambar'] = 
         $data2 = $this->db->get('produk');
-
         /////////PAGINATION////////////
-
         $config['base_url'] = 'http://localhost/index.php/tampil/index/';
         $config['total_rows'] = $data2->num_rows();
         $config['per_page'] = 6;
-
         $this->pagination->initialize($config);
-
         echo $this->pagination->create_links();
         //////END OF PAGINATION/////////////
 
         $this->load->view('header_admin');
         $this->load->view('slider');
-        $this->load->view('v_section_admin_menu');
         $this->load->view('v_section_admin', $data);
         $this->load->view('footer');
     }
     public function keInputProduct(){ 
         $this->load->view('header_admin');
-        //$this->load->view('slider');
         $this->load->view('v_section_admin_menu');
         $this->load->view('v_section_admin_inputPro');
         $this->load->view('footer');
@@ -126,7 +157,6 @@ class Tampil extends CI_Controller {
 
     public function kePemesanan(){
         $this->load->view('header_admin');
-        //$this->load->view('slider');
         $this->load->view('v_section_admin_menu');
         $this->load->view('v_section_admin_pemesanan');
         $this->load->view('footer');
@@ -135,17 +165,12 @@ class Tampil extends CI_Controller {
 
         /////PAGINATION/////////
         $this->load->library('pagination');
-
         $data['products'] = $this->mymodel->getAll('produk');
-        //$data['products']['gambar'] = 
         $data2 = $this->db->get('produk');
-
         $config['base_url'] = 'http://localhost/index.php/tampil/index/';
         $config['total_rows'] = $data2->num_rows();
         $config['per_page'] = 6;
-
         $this->pagination->initialize($config);
-
         echo $this->pagination->create_links();
         //////END OF PAGINATION/////////////
 
@@ -158,19 +183,14 @@ class Tampil extends CI_Controller {
     public function keDataPelanggan(){
         /////PAGINATION/////////
         $this->load->library('pagination');
-
         $data['products'] = $this->mymodel->getAll('pengguna');
         //$data['products']['gambar'] = 
         $data2 = $this->db->get('pengguna');
-
         /////////PAGINATION////////////
-
         $config['base_url'] = 'http://localhost/index.php/tampil/index/';
         $config['total_rows'] = $data2->num_rows();
         $config['per_page'] = 6;
-
         $this->pagination->initialize($config);
-
         echo $this->pagination->create_links();
         //////END OF PAGINATION/////////////
 
@@ -180,11 +200,11 @@ class Tampil extends CI_Controller {
         $this->load->view('v_section_admin_dataPel', $data);
         $this->load->view('footer');
     }
-    public function keFormUpdate(){
+    public function keFormUpdate($kode){
+        $data = $this->mymodel->getProd_kode($kode);
         $this->load->view('header_admin');
-        //$this->load->view('slider');
         $this->load->view('v_section_admin_menu');
-        $this->load->view('v_section_admin_updateForm');
+        $this->load->view('v_section_admin_updateForm', $data);
         $this->load->view('footer');
     }
 

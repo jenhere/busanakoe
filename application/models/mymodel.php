@@ -16,7 +16,10 @@ class Mymodel extends CI_Model {
     	$data = $this->db->query('select * from produk where kategori="'.$kategori.'"');
 		return $data->result();
     }
-
+    public function getProd_kode($kode){
+        $data = $this->db->query('select * from produk where kode_produk="'.$kode.'"');
+        return $data->result();
+    }
     public function getAll($tabel){
 
     	$hasil = $this->db->get($tabel);
