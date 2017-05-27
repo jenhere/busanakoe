@@ -151,8 +151,12 @@ class Tampil extends CI_Controller {
         }
     }
 
-    public function do_delproduct(){
-        echo "delete product";
+    public function do_delproduct($kode_produk){
+        $where = array('kode_produk' => $kode_produk);
+        $this->mymodel->hapusProduk($where, 'produk');
+        echo "string";
+        redirect(site_url('tampil/keDataProduct')); //ganti
+
     }
 
     public function kePemesanan(){

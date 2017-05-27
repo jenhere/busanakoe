@@ -30,6 +30,10 @@ class Mymodel extends CI_Model {
     		return array();
     	}
     }
+    public function hapusProduk($where,$table){
+        $this->db->where($where);
+        $this->db->delete($table);
+        }
 
     public function getPengguna($where){
         $this->db->where('email', $where);

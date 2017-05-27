@@ -31,7 +31,7 @@
 					                        <td><?=$product->stok?></td>
 					                        <td class="text-center">
 					                        <a class='btn btn-info btn-xs' href="<?php echo site_url()."/tampil/keFormUpdate/".$product->kode_produk;?>"><span class="glyphicon glyphicon-edit"></span> Edit</a> 
-					                        <a href="#" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-remove"></span> Del</a></td>
+					                        <a href="<?php echo site_url()."/tampil/do_delproduct/".$product->kode_produk;?>" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-remove"></span> Del</a></td>
 					                    </tr>
 					                    <?php }; ?>	
 						            </table>
