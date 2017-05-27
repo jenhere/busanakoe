@@ -6,12 +6,17 @@
 						<h2 class="title text-center">Update Produk</h2>	
 						<!--Form input barang-->
 							<div class="container signup-form" style="margin: 10px;">
+<<<<<<< HEAD
 							    <form role="form" action="" method="post" enctype="multipart/form-data" >
 
+=======
+							    <form role="form" action="#" method="post" enctype="multipart/form-data" >
+							    <?php foreach($data as $datas){ ?>
+>>>>>>> f3f71f15475aa780879e473323970dfb33266e32
 							        <div class="form-group">
-							          	<div class="col-md-2"><label for="kode_produk" >Kode Produk</label></div>
+							          	<div class="col-md-2"><label for="kode_produk" >Kode Produk</label></div><!--DISINIIIII	-->
 							            <div class="col-md-6">
-							                <input type="text" class="form-control" nama="kode_produk" placeholder="Masukkan Kode Produk">
+							                <input type="text" class="form-control" nama="kode_produk" value="<?=$datas->kode_produk?>">
 							            </div> 
 							            <div class="col-md-12"></div>
 							        </div>
@@ -69,11 +74,15 @@
 							            </div>
 							            <div class="col-md-12">
 							        </div>
-							   
+							   		<?php }; ?>	
 							            <div class="row">
 							              <div class="col-md-6"></div>
 							              <div class="col-md-6">
+<<<<<<< HEAD
 							                <button type="submit" class="btn btn-info">Update Produk</button>
+=======
+							                <button type="submit" class="btn btn-info">UPDATE</button>
+>>>>>>> f3f71f15475aa780879e473323970dfb33266e32
 							              </div>
 							            </div>
 							    </form>

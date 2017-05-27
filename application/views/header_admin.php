@@ -54,6 +54,7 @@
 					<div class="col-sm-8">
 						<div class="shop-menu pull-right">
 							<ul class="nav navbar-nav">
+								<li><a href="#"><i class="fa fa-user" aria-hidden="true"></i> Admin</a></li>
 								<li><a href="<?php echo site_url()."/tampil/";?>"><i class="fa fa-lock"></i> Logout</a></li>
 							</ul>
 						</div>
@@ -77,13 +78,12 @@
 						<div class="mainmenu pull-left">
 							<ul class="nav navbar-nav collapse navbar-collapse">
 								<li><a href="<?php echo base_url()."index.php/tampil/keVhomeAdm";?>" class="active">Home</a></li>
-								<li class="dropdown"><a href="#">Shop<i class="fa fa-angle-down"></i></a>
+								<li class="dropdown"><a href="#">Pengaturan<i class="fa fa-angle-down"></i></a>
                                     <ul role="menu" class="sub-menu">
-                                        <li><a href="shop.html">Products</a></li>
-										<li><a href="product-details.html">Product Details</a></li> 
-										<li><a href="checkout.html">Checkout</a></li> 
-										<li><a href="<?php echo base_url()."index.php/tampil/cart";?>">Cart</a></li> 
-										<li><a href="<?php echo base_url()."index.php/tampil/login";?>">Login</a></li> 
+										<li><a href="<?php echo site_url()."/tampil/keInputProduct";?>">Tambahkan Produk  </a></li> 
+										<li><a href="<?php echo site_url()."/tampil/kePemesanan";?>">Pemesanan </a></li> 
+										<li><a href="<?php echo site_url()."/tampil/keDataProduct";?>">Data Produk </a></li> 
+										<li><a href="<?php echo site_url()."/tampil/keDataPelanggan";?>">Data Pelanggan </a></li> 
                                     </ul>
                                 </li> 
 								<li><a href="#">Contact</a></li>

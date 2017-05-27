@@ -25,28 +25,6 @@
 								</div>
 							</div>
 						</div><!--/tambahakan barang-->
-
-							<h2>Kategori</h2>
-						<div class="panel-group category-products" id="accordian"><!--category-productsr-->
-						
-							<div class="panel panel-default">
-								<div class="panel-heading">
-									<h4 class="panel-title"><a href="<?php echo site_url()."/tampil/";?>">Pria</a></h4>
-								</div>
-							</div>
-							<div class="panel panel-default">
-								<div class="panel-heading">
-									<h4 class="panel-title"><a href="#">Wanita</a></h4>
-								</div>
-							</div>
-							<div class="panel panel-default">
-								<div class="panel-heading">
-									<h4 class="panel-title"><a href="#">Aksesoris</a></h4>
-								</div>
-							</div>
-						</div><!--/category-products-->
-					</div>
-				
-			
+					</div>		
 		</div>
 </section>
