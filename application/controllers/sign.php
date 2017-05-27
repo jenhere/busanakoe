@@ -31,14 +31,19 @@ class Sign extends CI_Controller {
 		$sandi = $_POST['sandi'];
 		$ensandi = sha1(md5($sandi));
 
+		$data = $this->mymodel->getPengguna($email);
+		$data = get_object_vars($data);
+		$level = $data['level'];
+
 		$cek = $this->mymodel->login($email, $ensandi);
 		$tes = count($cek);
 
-		if($tes>0){
-			redirect('tampil');
+		if($tes>0 && $level == 'user'){
+			redirect('tampil/keVhomePel/'.$data->nama);
+		}elseif ($tes>0 && $level == 'admin') {
+			redirect('tampil/keVhomeAdm');
 		}else{
 			redirect('tampil/login');
 		}
-	
 	}
 }

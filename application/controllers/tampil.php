@@ -210,9 +210,22 @@ class Tampil extends CI_Controller {
 
     //TAMPILAN PELANGGAN
     public function keVhomePel(){
+         /////PAGINATION/////////
+        $this->load->library('pagination');
+        $data['products'] = $this->mymodel->getAll('produk');
+        //$data['products']['gambar'] = 
+        $data2 = $this->db->get('produk');
+        /////////PAGINATION////////////
+        $config['base_url'] = 'http://localhost/index.php/tampil/index/';
+        $config['total_rows'] = $data2->num_rows();
+        $config['per_page'] = 6;
+        $this->pagination->initialize($config);
+        echo $this->pagination->create_links();
+        //////END OF PAGINATION/////////////
+
         $this->load->view('header_pelanggan');
         $this->load->view('slider');
-        $this->load->view('v_section_pelanggan');
+        $this->load->view('v_section', $data);
         $this->load->view('footer');
     }
     
