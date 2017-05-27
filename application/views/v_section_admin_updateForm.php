@@ -6,7 +6,7 @@
 						<h2 class="title text-center">Update Produk</h2>	
 						<!--Form input barang-->
 							<div class="container signup-form" style="margin: 10px;">
-							    <form role="form" action="#" method="post" enctype="multipart/form-data" >
+							    <form role="form" action="" method="post" enctype="multipart/form-data" >
 
 							        <div class="form-group">
 							          	<div class="col-md-2"><label for="kode_produk" >Kode Produk</label></div>
@@ -73,7 +73,7 @@
 							            <div class="row">
 							              <div class="col-md-6"></div>
 							              <div class="col-md-6">
-							                <button type="submit" class="btn btn-info">Tambahkan</button>
+							                <button type="submit" class="btn btn-info">Update Produk</button>
 							              </div>
 							            </div>
 							    </form>
