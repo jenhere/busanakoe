@@ -186,7 +186,8 @@ class Tampil extends CI_Controller {
     public function keDataPelanggan(){
         /////PAGINATION/////////
         $this->load->library('pagination');
-        $data['products'] = $this->mymodel->getAll('pengguna');
+        $where = array('level' => 'user' );
+        $data['products'] = $this->mymodel->getWhere('pengguna', $where);
         //$data['products']['gambar'] = 
         $data2 = $this->db->get('pengguna');
         /////////PAGINATION////////////

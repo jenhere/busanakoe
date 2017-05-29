@@ -24,6 +24,10 @@ class Mymodel extends CI_Model {
         $prod = $this->db->query('select * from produk '.$kode);
         return $prod->result_array();
     }
+    public function getWhere($tabel, $where){
+        $res = $this->db->get_where($tabel, $where);
+        return $res->result();
+    }
     public function getAll($tabel){
 
     	$hasil = $this->db->get($tabel);
