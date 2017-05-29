@@ -22,7 +22,7 @@
 							</div>
 						</div><!--/category-products-->
 						<div class="shipping text-center"><!--shipping-->
-								<img src="#"  alt="" />
+								<!--<img src="#"  alt="" />-->
 						</div><!--/shipping-->
 					</div>
 				</div>

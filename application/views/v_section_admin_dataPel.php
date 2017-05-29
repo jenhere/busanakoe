@@ -20,7 +20,7 @@
 						                <td><?=$product->nama?></td>
 						                <td><?=$product->no_hp?></td>
 						                <td><?=$product->email?></td>
-						                <td class="text-center"><a class='btn btn-info btn-xs' href="#"><span class="glyphicon glyphicon-edit"></span> Edit</a> <a href="#" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-remove"></span> Del</a></td>
+						                <td class="text-center"><a class='btn btn-info btn-xs' href="#"><span class="glyphicon glyphicon-edit"></span> Edit</a> <a href="<?php echo site_url()."/tampil/do_delpel/".$product->email;?>" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-remove"></span> Del</a></td>
 						            </tr>
 						            <?php }; ?>	
 

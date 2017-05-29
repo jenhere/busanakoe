@@ -27,7 +27,7 @@
 						<div class="contactinfo">
 							<ul class="nav nav-pills">
 								<li><a href="#"><i class="fa fa-phone"></i> 085-230-808-158</a></li>
-								<li><a href="#"><i class="fa fa-envelope"></i> busanakoe@gmail.cm</a></li>
+								<li><a href="#"><i class="fa fa-envelope"></i> busanakoe@gmail.com</a></li>
 							</ul>
 						</div>
 					</div>
@@ -57,7 +57,7 @@
 								<li><a href="#"><i class="fa fa-star"></i> Wishlist</a></li>
 								<li><a href="<?php echo site_url()."/tampil/keVhomeAdm";?>"><i class="fa fa-crosshairs"></i> Checkout</a></li>
 								<li><a href="<?php echo site_url()."/tampil/keCart";?>"><i class="fa fa-shopping-cart"></i> Cart</a></li>
-								<li><a href="<?php echo site_url()."/tampil/login";?>"><i class="fa fa-lock"></i> Login</a></li>
+								<li><a href="<?php echo site_url()."/sign";?>"><i class="fa fa-lock"></i> Login</a></li>
 							</ul>
 						</div>
 					</div>
@@ -80,15 +80,15 @@
 						<div class="mainmenu pull-left">
 							<ul class="nav navbar-nav collapse navbar-collapse">
 								<li><a href="<?php echo site_url()."/tampil/";?>" class="active">Home</a></li>
-								<li class="dropdown"><a href="#">Shop<i class="fa fa-angle-down"></i></a>
+								<!--<li class="dropdown"><a href="#">Shop<i class="fa fa-angle-down"></i></a>
                                     <ul role="menu" class="sub-menu">
                                         <li><a href="shop.html">Products</a></li>
 										<li><a href="product-details.html">Product Details</a></li> 
 										<li><a href="checkout.html">Checkout</a></li> 
 										<li><a href="<?php echo base_url()."index.php/tampil/cart";?>">Cart</a></li> 
-										<li><a href="<?php echo base_url()."index.php/tampil/login";?>">Login</a></li> 
+										<li><a href="<?php echo base_url()."index.php/tampil/sign";?>">Login</a></li> 
                                     </ul>
-                                </li> 
+                                </li> -->
 								<li><a href="#">Contact</a></li>
 							</ul>
 						</div>

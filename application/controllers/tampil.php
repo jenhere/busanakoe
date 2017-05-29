@@ -29,6 +29,10 @@ class Tampil extends CI_Controller {
         $this->load->view('footer');
 	}
     public function keVhomekat_umum($ktgr){
+        if(!$this->session->userdata('email')){
+            $this->session->set_flashdata('error', 'Maaf, anda belum login');
+            header("Location: http://localhost/tampil/index.php/login");
+        }
         /////PAGINATION/////////
         $this->load->library('pagination');
         $data['products'] = $this->mymodel->getProd($ktgr);
@@ -48,6 +52,10 @@ class Tampil extends CI_Controller {
         $this->load->view('footer');
     }
     public function keVhomekat_admin($ktgr){
+        if(!$this->session->userdata('email')){
+            $this->session->set_flashdata('error', 'Maaf, anda belum login');
+            header("Location: http://localhost/tampil/index.php/login");
+        }
         /////PAGINATION/////////
         $this->load->library('pagination');
         $data['products'] = $this->mymodel->getProd($ktgr);
@@ -67,6 +75,10 @@ class Tampil extends CI_Controller {
         $this->load->view('footer');
     }
     public function keVhomekat_pel($ktgr){
+        if(!$this->session->userdata('email')){
+            $this->session->set_flashdata('error', 'Maaf, anda belum login');
+            header("Location: http://localhost/tampil/index.php/login");
+        }
         /////PAGINATION/////////
         $this->load->library('pagination');
         $data['products'] = $this->mymodel->getProd($ktgr);
@@ -85,15 +97,23 @@ class Tampil extends CI_Controller {
         $this->load->view('v_section', $data);
         $this->load->view('footer');
     }
-	public function login(){
+	/*public function login(){
         $this->load->view('vlogin');
-    }
+    }*/
     public function keCart(){
+        if(!$this->session->userdata('email')){
+            $this->session->set_flashdata('error', 'Maaf, anda belum login');
+            header("Location: http://localhost/tampil/index.php/login");
+        }
         $this->load->view('cart');
     }
 
     //ADMIN
     public function keVhomeAdm(){
+        if(!$this->session->userdata('email')){
+            $this->session->set_flashdata('error', 'Maaf, anda belum login');
+            header("Location: http://localhost/tampil/index.php/login");
+        }
 
          /////PAGINATION/////////
         $this->load->library('pagination');
@@ -114,6 +134,10 @@ class Tampil extends CI_Controller {
         $this->load->view('footer');
     }
     public function keInputProduct(){ 
+        if(!$this->session->userdata('email')){
+            $this->session->set_flashdata('error', 'Maaf, anda belum login');
+            header("Location: http://localhost/tampil/index.php/login");
+        }
         $this->load->view('header_admin');
         $this->load->view('v_section_admin_menu');
         $this->load->view('v_section_admin_inputPro');
@@ -121,6 +145,11 @@ class Tampil extends CI_Controller {
     }
 
     public function do_addproduct(){//insert produk 
+
+        if(!$this->session->userdata('email')){
+            $this->session->set_flashdata('error', 'Maaf, anda belum login');
+            header("Location: http://localhost/tampil/index.php/login");
+        }
         $target = "upload/".basename($_FILES['uploadimage']['name']);
 
         $kode_produk= $_POST['kode_produk'];
@@ -151,6 +180,7 @@ class Tampil extends CI_Controller {
     }
 
     public function do_delproduct($kode_produk){
+
         $where = array('kode_produk' => $kode_produk);
         $this->mymodel->hapusProduk($where, 'produk');
         echo "string";
@@ -159,12 +189,20 @@ class Tampil extends CI_Controller {
     }
 
     public function kePemesanan(){
+        if(!$this->session->userdata('email')){
+            $this->session->set_flashdata('error', 'Maaf, anda belum login');
+            header("Location: http://localhost/tampil/index.php/login");
+        }
         $this->load->view('header_admin');
         $this->load->view('v_section_admin_menu');
         $this->load->view('v_section_admin_pemesanan');
         $this->load->view('footer');
     }
      public function keDataProduct(){
+        if(!$this->session->userdata('email')){
+            $this->session->set_flashdata('error', 'Maaf, anda belum login');
+            header("Location: http://localhost/tampil/index.php/login");
+        }
 
         /////PAGINATION/////////
         $this->load->library('pagination');
@@ -184,6 +222,10 @@ class Tampil extends CI_Controller {
         $this->load->view('footer');
     }
     public function keDataPelanggan(){
+        if(!$this->session->userdata('email')){
+            $this->session->set_flashdata('error', 'Maaf, anda belum login');
+            header("Location: http://localhost/tampil/index.php/login");
+        }else{
         /////PAGINATION/////////
         $this->load->library('pagination');
         $where = array('level' => 'user' );
@@ -203,8 +245,22 @@ class Tampil extends CI_Controller {
         $this->load->view('v_section_admin_menu');
         $this->load->view('v_section_admin_dataPel', $data);
         $this->load->view('footer');
+        }
     }
+    public function do_delpel($email){
+
+        $where = array('email' => $email);
+        $this->mymodel->hapus($where, 'pelanggan');
+        echo "string";
+        redirect(site_url('tampil/keDataPelanggan'));
+
+    }
+
     public function keFormUpdate($kode){
+        if(!$this->session->userdata('email')){
+            $this->session->set_flashdata('error', 'Maaf, anda belum login');
+            header("Location: http://localhost/tampil/index.php/login");
+        }
         $prod = $this->mymodel->getProd_kode("where kode_produk = '$kode'");
         $data = array(
             "kode_produk" => $prod['0']['kode_produk'], 
@@ -252,6 +308,10 @@ class Tampil extends CI_Controller {
 
     //TAMPILAN PELANGGAN
     public function keVhomePel(){
+        if(!$this->session->userdata('email')){
+            $this->session->set_flashdata('error', 'Maaf, anda belum login');
+            header("Location: http://localhost/tampil/index.php/login");
+        }
          /////PAGINATION/////////
         $this->load->library('pagination');
         $data['products'] = $this->mymodel->getAll('produk');

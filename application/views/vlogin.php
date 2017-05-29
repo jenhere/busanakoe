@@ -62,17 +62,6 @@
 						</div>
 					
 					</div>
-					<div class="col-sm-8">
-						<div class="shop-menu pull-right">
-							<ul class="nav navbar-nav">
-								<li><a href=""><i class="fa fa-user"></i> Account</a></li>
-								<li><a href=""><i class="fa fa-star"></i> Wishlist</a></li>
-								<li><a href="checkout.html"><i class="fa fa-crosshairs"></i> Checkout</a></li>
-								<li><a href="cart.html"><i class="fa fa-shopping-cart"></i> Cart</a></li>
-								
-							</ul>
-						</div>
-					</div>
 				</div>
 			</div>
 		</div><!--/header-middle-->
@@ -91,8 +80,8 @@
 						</div>
 						<div class="mainmenu pull-left">
 							<ul class="nav navbar-nav collapse navbar-collapse">
-								<li><a href="<?php echo site_url()."/tampil/index";?>" class="active">Home</a></li>
-								<li class="dropdown"><a href="#">Shop<i class="fa fa-angle-down"></i></a>
+								<li><a href="<?php echo site_url()."/tampil/index";?>" class="">Home</a></li>
+								<!--<li class="dropdown"><a href="#">Shop<i class="fa fa-angle-down"></i></a>
                                     <ul role="menu" class="sub-menu">
                                         <li><a href="shop.html">Products</a></li>
 										<li><a href="product-details.html">Product Details</a></li> 
@@ -100,12 +89,11 @@
 										<li><a href="cart.html">Cart</a></li> 
 										<li><a href="<?php echo base_url()."index.php/tampil/login";?>">Login</a></li> 
                                     </ul>
-                                </li> 
+                                </li> -->
 								<li><a href="#">Contact</a></li>
 							</ul>
 						</div>
 					</div>
-					<div class="col-sm-3"></div>
 				</div>
 			</div>
 		</div><!--/header-bottom-->
@@ -114,9 +102,20 @@
 	<section id="form"><!--form-->
 		<div class="container">
 			<div class="row">
+				<div class="col-sm-offset-1">
+					<h4>
+					<?php
+						if (isset($message_display)) {
+							echo "<div class='message'>";
+							echo $message_display;
+							echo "</div>";
+						}
+					?></h4>
+					<h4><?=$this->session->flashdata('error')?></h4>
+				</div>
 				<div class="col-sm-4 col-sm-offset-1">
 					<div class="login-form"><!--login form-->
-						<h2>Masuke ke Busanakoe</h2>
+						<h2>Masuk ke Busanakoe</h2>
 						<form method="POST" action="<?php echo site_url('sign/do_signin')?>">
 							<input type="email" name="email" placeholder="Alamat Email" />
 							<input type="password" name="sandi" placeholder="Kata Sandi" />
@@ -132,10 +131,10 @@
 					<div class="signup-form"><!--sign up form-->
 						<h2>Buat Akun Baru</h2>
 						<form method="POST" action="<?php echo site_url('sign/do_signup')?>">
-							<input type="text" name="nama" placeholder="Nama Lengkap"/>
-							<input type="text" name="no_hp" placeholder="Nomer Handphone"/>
-							<input type="email" name="email" placeholder="Alamat E-mail"/>
-							<input type="password" name="sandi" placeholder="Kata Sandi"/>
+							<input type="text" name="nama" placeholder="Nama Lengkap" size="50" />
+							<input type="text" name="no_hp" placeholder="Nomer Handphone" size="13" />
+							<input type="email" name="email" placeholder="Alamat E-mail" size="50" />
+							<input type="password" name="sandi" placeholder="Kata Sandi" size="50" />
 							<button type="submit" class="btn btn-default">Buat Akun</button>
 						</form>
 					</div><!--/sign up form-->

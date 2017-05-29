@@ -38,7 +38,7 @@ class Mymodel extends CI_Model {
     		return array();
     	}
     }
-    public function hapusProduk($where,$table){
+    public function hapus($where,$table){
         $this->db->where($where);
         $this->db->delete($table);
         }

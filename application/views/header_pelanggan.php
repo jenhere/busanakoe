@@ -49,7 +49,7 @@
 				<div class="row">
 					<div class="col-sm-4">
 						<div class="logo pull-left">
-							<a href="<?php echo site_url()."/tampil/index";?>" ><img src="<?php echo base_url('assets/images/home/logo.png') ?>" alt="" /></a> 
+							<a href="<?php echo site_url()."/tampil/keVhomePel";?>" ><img src="<?php echo base_url('assets/images/home/logo.png') ?>" alt="" /></a> 
 						</div>
 					</div>
 					<div class="col-sm-8">
@@ -58,7 +58,9 @@
 								<li><a href="#"><i class="fa fa-star"></i> Wishlist</a></li>
 								<li><a href="<?php echo site_url()."/tampil/keVhomeAdm";?>"><i class="fa fa-crosshairs"></i> Checkout</a></li>
 								<li><a href="<?php echo site_url()."/tampil/keCart";?>"><i class="fa fa-shopping-cart"></i> Cart</a></li>
-								<li><a href="<?php echo site_url()."/tampil/";?>"><i class="fa fa-lock"></i> Logout</a></li>
+								<li><a href="#"><i class="fa fa-user" aria-hidden="true"></i> <?php echo $this->session->userdata('name'); ?></a></li>
+								<li><a href="<?php echo site_url()."/sign/";?>"><i class="fa fa-lock"></i> Logout</a></li>
+
 							</ul>
 						</div>
 					</div>
@@ -80,16 +82,16 @@
 						</div>
 						<div class="mainmenu pull-left">
 							<ul class="nav navbar-nav collapse navbar-collapse">
-								<li><a href="<?php echo site_url()."/tampil/";?>" class="active">Home</a></li>
-								<li class="dropdown"><a href="#">Shop<i class="fa fa-angle-down"></i></a>
+								<li><a href="<?php echo site_url()."/tampil/keVhomePel";?>" class="active">Home</a></li>
+								<!--<li class="dropdown"><a href="#">Shop<i class="fa fa-angle-down"></i></a>
                                     <ul role="menu" class="sub-menu">
                                         <li><a href="shop.html">Products</a></li>
 										<li><a href="product-details.html">Product Details</a></li> 
 										<li><a href="checkout.html">Checkout</a></li> 
 										<li><a href="<?php echo base_url()."index.php/tampil/cart";?>">Cart</a></li> 
-										<li><a href="<?php echo base_url()."index.php/tampil/login";?>">Login</a></li> 
+										<li><a href="<?php echo base_url()."index.php/sign/";?>">Login</a></li> 
                                     </ul>
-                                </li> 
+                                </li> -->
 								<li><a href="#">Contact</a></li>
 							</ul>
 						</div>

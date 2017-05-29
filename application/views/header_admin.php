@@ -55,7 +55,7 @@
 						<div class="shop-menu pull-right">
 							<ul class="nav navbar-nav">
 								<li><a href="#"><i class="fa fa-user" aria-hidden="true"></i> Admin</a></li>
-								<li><a href="<?php echo site_url()."/tampil/";?>"><i class="fa fa-lock"></i> Logout</a></li>
+								<li><a href="<?php echo site_url()."/sign/";?>"><i class="fa fa-lock"></i> Logout</a></li>
 							</ul>
 						</div>
 					</div>
