@@ -85,7 +85,7 @@ class Sign extends CI_Controller {
 		}
 	}
 
-	public funtion logout(){
+	public function logout(){
 		$this->session->sess_destroy();
 		$this->load->view('vlogin');
 	}
