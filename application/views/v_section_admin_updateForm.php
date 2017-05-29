@@ -6,17 +6,11 @@
 						<h2 class="title text-center">Update Produk</h2>	
 						<!--Form input barang-->
 							<div class="container signup-form" style="margin: 10px;">
-<<<<<<< HEAD
-							    <form role="form" action="" method="post" enctype="multipart/form-data" >
-
-=======
-							    <form role="form" action="#" method="post" enctype="multipart/form-data" >
-							    <?php foreach($data as $datas){ ?>
->>>>>>> f3f71f15475aa780879e473323970dfb33266e32
+							    <form role="form" action="<?php echo site_url('tampil/do_updateproduct')?>" method="post" enctype="multipart/form-data" >
 							        <div class="form-group">
-							          	<div class="col-md-2"><label for="kode_produk" >Kode Produk</label></div><!--DISINIIIII	-->
+							          	<div class="col-md-2"><label for="kode_produk" >Kode Produk</label></div>
 							            <div class="col-md-6">
-							                <input type="text" class="form-control" nama="kode_produk" value="<?=$datas->kode_produk?>">
+							                <input type="text" class="form-control" name="kode_produk" value="<?php echo $kode_produk; ?>" readonly>
 							            </div> 
 							            <div class="col-md-12"></div>
 							        </div>
@@ -24,7 +18,7 @@
 							        <div class="form-group">
 							         	<div class="col-md-2"><label for="nama_produk">Nama Produk</label></div>
 							            <div class="col-md-6">
-							                  <input type="text" class="form-control" nama="nama_produk" placeholder="Masukkan Nama Produk">
+							                  <input type="text" class="form-control" name="nama_produk" value="<?php echo $nama_produk; ?>">
 							            </div>
 							            <div class="col-md-12"></div>
 							        </div>
@@ -34,9 +28,9 @@
 							                <div class="col-md-6">
 							            		<select name="kategori"  class="form-control">
 							                    	<option>--Silahkan pilih--</option>
-							                    	<option>Pria</option>
-							                    	<option>Wanita</option>
-							                    	<option>Aksesoris</option>
+							                    	<option value="Pria"<?=$kategori == 'Pria' ? ' selected="selected"' : '';?>>Pria</option>
+							                    	<option value="Wanita"<?=$kategori == 'Wanita' ? ' selected="selected"' : '';?>>Wanita</option>
+							                    	<option value="Aksesoris"<?=$kategori == 'Aksesoris' ? ' selected="selected"' : '';?>>Aksesoris</option>
 							                	</select>
 							            	</div>
 							            <div class="col-md-12"></div>
@@ -45,7 +39,7 @@
 							        <div class="form-group">
 							        	<div class="col-md-2"><label for="harga_produk">Harga Produk </label></div>
 							            <div class="col-md-6">
-							                <input type="text" class="form-control" nama="harga_produk" placeholder="Masukkan Harga Produk">
+							                <input type="text" class="form-control" name="harga_produk" value="<?php echo $harga_produk; ?>">
 							            </div>
 							            <div class="col-md-12"></div>
 							        </div>
@@ -53,6 +47,7 @@
 							        <div padding="3px" class="form-group">
 							        	<div class="col-md-2"><label for="uploadimage">Upload Image </label></div>
 							            <div class="col-md-6">
+							            	<img src="<?php echo base_url('upload/'.$gambar) ?>" alt="" width="268" height="249" />
 							                <input type="file" name="uploadimage" id="uploadimage">
 							                <p class="help-block"> Allowed formats: jpeg, jpg, gif, png </p>
 							            </div>
@@ -62,7 +57,7 @@
 							        <div class="form-group">
 							            <div class="col-md-2"><label for="deskripsi">Deskripsi</label></div>
 							            <div class="col-md-6">
-							                <input type="text" class="form-control" nama="deskripsi" placeholder="Deskripsi Produk">
+							                <input type="text" class="form-control" name="deskripsi" value="<?php echo $deskripsi; ?>">
 							            </div>
 							            <div class="col-md-12">
 							         </div>
@@ -70,19 +65,14 @@
 							        <div class="form-group">
 							            <div class="col-md-2"><label for="stok">Stok</label></div>
 							            <div class="col-md-6">
-							                <input type="text" class="form-control" nama="stok" placeholder="Stok Produk">
+							                <input type="text" class="form-control" name="stok" value="<?php echo $stok; ?>">
 							            </div>
 							            <div class="col-md-12">
 							        </div>
-							   		<?php }; ?>	
 							            <div class="row">
 							              <div class="col-md-6"></div>
 							              <div class="col-md-6">
-<<<<<<< HEAD
-							                <button type="submit" class="btn btn-info">Update Produk</button>
-=======
 							                <button type="submit" class="btn btn-info">UPDATE</button>
->>>>>>> f3f71f15475aa780879e473323970dfb33266e32
 							              </div>
 							            </div>
 							    </form>

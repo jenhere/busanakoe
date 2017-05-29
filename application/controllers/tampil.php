@@ -121,7 +121,6 @@ class Tampil extends CI_Controller {
     }
 
     public function do_addproduct(){//insert produk 
-        //if(isset(var))
         $target = "upload/".basename($_FILES['uploadimage']['name']);
 
         $kode_produk= $_POST['kode_produk'];
@@ -205,11 +204,49 @@ class Tampil extends CI_Controller {
         $this->load->view('footer');
     }
     public function keFormUpdate($kode){
-        $data = $this->mymodel->getProd_kode($kode);
+        $prod = $this->mymodel->getProd_kode("where kode_produk = '$kode'");
+        $data = array(
+            "kode_produk" => $prod['0']['kode_produk'], 
+            "nama_produk" => $prod['0']['nama_produk'],
+            "kategori" => $prod['0']['kategori'],
+            "harga_produk" => $prod['0']['harga_produk'],
+            "gambar" => $prod['0']['gambar'],
+            "deskripsi" => $prod['0']['deskripsi'],
+            "stok" => $prod['0']['stok']
+        );
         $this->load->view('header_admin');
         $this->load->view('v_section_admin_menu');
         $this->load->view('v_section_admin_updateForm', $data);
         $this->load->view('footer');
+    }
+
+    public function do_updateproduct(){
+        $target = "upload/".basename($_FILES['uploadimage']['name']);
+
+        $kode_produk= $_POST['kode_produk'];
+        $nama_produk = $_POST['nama_produk'];
+        $kategori = $_POST['kategori'];
+        $harga_produk = $_POST['harga_produk'];
+        $gambar = $_FILES['uploadimage']['name'];
+        $deskripsi = $_POST['deskripsi'];
+        $stok = $_POST['stok'];
+        $data_update = array(
+            'nama_produk' => $nama_produk,
+            'kategori' => $kategori,
+            'harga_produk' => $harga_produk,
+            'gambar' => $gambar,
+            'deskripsi' => $deskripsi,
+            'stok' => $stok
+        );
+        $where = array('kode_produk' => $kode_produk );
+        $res = $this->mymodel->ubah('produk', $data_update, $where);
+
+        if($res>=1 && move_uploaded_file($_FILES['uploadimage']['tmp_name'] , $target)){
+            header("Location: http://localhost/busanakoe/index.php/tampil/keDataProduct");
+            exit();
+        }else{
+            echo "<h2>Update produk gagal</h2>";
+        }
     }
 
     //TAMPILAN PELANGGAN

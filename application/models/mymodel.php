@@ -12,13 +12,17 @@ class Mymodel extends CI_Model {
         $res = $this->db->insert($namatbl, $data);
         return $res;
     }
+    public function ubah($namatbl, $data, $where){
+        $res = $this->db->update($namatbl, $data, $where);
+        return $res;
+    }
     public function getProd($kategori){
     	$data = $this->db->query('select * from produk where kategori="'.$kategori.'"');
 		return $data->result();
     }
-    public function getProd_kode($kode){
-        $data = $this->db->query('select * from produk where kode_produk="'.$kode.'"');
-        return $data->result();
+    public function getProd_kode($kode=""){
+        $prod = $this->db->query('select * from produk '.$kode);
+        return $prod->result_array();
     }
     public function getAll($tabel){
 
