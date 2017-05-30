@@ -106,19 +106,22 @@ class Tampil extends CI_Controller {
     public function add_to_cart($kode_produk){
         $product = $this->mymodel->find($kode_produk);
         $data = array(
-                       'kode_produk'      => $product->kode_produk,
+                       'id'      => $product->kode_produk,
+                       'name'    => $product->nama_produk,
                        'qty'     => 1,
-                       'harga_produk'   => $product->harga_produk,
-                       'nama_produk'    => $product->nama_produk
+                       'price'   => $product->harga_produk
                     );
 
         $this->cart->insert($data);
         redirect(base_url());
     } 
-    public function clear_cart()
-    {
+    public function clear_cart(){
         $this->cart->destroy();
-        redirect(base_url());
+        redirect(site_url()."/tampil/keCart");
+    }
+    public function clear_cart_id($id){
+        $this->cart->remove($id);
+        redirect(site_url()."/tampil/keCart");
     }
 
     //ADMIN
