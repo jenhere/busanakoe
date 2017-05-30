@@ -55,8 +55,8 @@
 					<div class="col-sm-8">
 						<div class="shop-menu pull-right">
 							<ul class="nav navbar-nav">
-								<li><a href="#"><i class="fa fa-star"></i> Wishlist</a></li>
-								<li><a href="<?php echo site_url()."/tampil/keVhomeAdm";?>"><i class="fa fa-crosshairs"></i> Checkout</a></li>
+						
+								<li><a href="#"><i class="fa fa-crosshairs"></i> Checkout</a></li>
 								<li><?php
 									$text_cart_url  = '<span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>';
 									$text_cart_url .= ' Shopping Cart: '. $this->cart->total_items() .' items';
