@@ -102,16 +102,7 @@
 						</div>
 						<div class="mainmenu pull-left">
 							<ul class="nav navbar-nav collapse navbar-collapse">
-								<li><a href="index.html">Home</a></li>
-								<li class="dropdown"><a href="#">Shop<i class="fa fa-angle-down"></i></a>
-                                    <ul role="menu" class="sub-menu">
-                                        <li><a href="shop.html">Products</a></li>
-										<li><a href="product-details.html">Product Details</a></li> 
-										<li><a href="checkout.html">Checkout</a></li> 
-										<li><a href="cart.html" class="active">Cart</a></li> 
-										<li><a href="login.html">Login</a></li> 
-                                    </ul>
-                                </li> 
+								<li><a href="<?php echo site_url()."/tampil/keVhomePel";?>">Home</a></li>
 								<li><a href="contact-us.html">Contact</a></li>
 							</ul>
 						</div>
@@ -144,24 +135,23 @@
 						<tr>
 						<!-- Data dari database-->
 							<td class="cart_description">
-								<p><?= $items['nama_produk'] ?></p>
-								<p>Web ID: 1089772</p>
+								<h4><?= $items['name'] ?></h4>
 							</td>
 							<td class="cart_price">
-								<p>Rp.100.000,00</p>
+								<p>Rp. <?php echo $this->cart->format_number($items['price']); ?></p>
 							</td>
 							<td class="cart_quantity">
 								<div class="cart_quantity_button">
 									<a class="cart_quantity_up" href=""> + </a>
-									<input class="cart_quantity_input" type="text" name="quantity" value="1" autocomplete="off" size="2">
+									<input class="cart_quantity_input" type="text" name="quantity" value="<?= $items['qty'] ?>" autocomplete="off" size="2">
 									<a class="cart_quantity_down" href=""> - </a>
 								</div>
 							</td>
 							<td class="cart_total">
-								<p class="cart_total_price">Rp.100.000</p>
+								<p class="cart_total_price">Rp. <?php echo $this->cart->format_number($items['subtotal']); ?></p>
 							</td>
 							<td class="cart_delete">
-								<a class="cart_quantity_delete" href=""><i class="fa fa-times"></i></a>
+								<a class="cart_quantity_delete" href="<?php echo site_url()."/tampil/clear_cart_id/".$items['id']?>"><i class="fa fa-times"></i></a>
 							</td>
 						</tr>
 						<?php endforeach; ?>
