@@ -24,6 +24,17 @@ class Mymodel extends CI_Model {
         $prod = $this->db->query('select * from produk '.$kode);
         return $prod->result_array();
     }
+    public function find($kode){
+        //Query mencari record berdasarkan kode_produk-nya
+        $hasil = $this->db->where('kode_produk', $kode)
+                          ->limit(1)
+                          ->get('produk');
+        if($hasil->num_rows() > 0){
+            return $hasil->row();
+        } else {
+            return array();
+        }
+    }   
     public function getWhere($tabel, $where){
         $res = $this->db->get_where($tabel, $where);
         return $res->result();

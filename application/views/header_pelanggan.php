@@ -57,9 +57,20 @@
 							<ul class="nav navbar-nav">
 								<li><a href="#"><i class="fa fa-star"></i> Wishlist</a></li>
 								<li><a href="<?php echo site_url()."/tampil/keVhomeAdm";?>"><i class="fa fa-crosshairs"></i> Checkout</a></li>
-								<li><a href="<?php echo site_url()."/tampil/keCart";?>"><i class="fa fa-shopping-cart"></i> Cart</a></li>
-								<li><a href="#"><i class="fa fa-user" aria-hidden="true"></i> <?php echo $this->session->userdata('name'); ?></a></li>
-								<li><a href="<?php echo site_url()."/sign/";?>"><i class="fa fa-lock"></i> Logout</a></li>
+								<li><?php
+									$text_cart_url  = '<span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>';
+									$text_cart_url .= ' Shopping Cart: '. $this->cart->total_items() .' items';
+									?>
+									<?=anchor(site_url()."/tampil/keCart", $text_cart_url)?>
+										
+								</li>
+								<?php if($this->session->userdata('nama')) { ?>
+									<li><a href="#"><i class="fa fa-user" aria-hidden="true"></i> Hello, <?=$this->session->userdata('nama')?></a></li>
+									<li><a href="<?php echo site_url()."/sign/";?>"><i class="fa fa-lock"></i> Logout</a></li>
+								<?php } else { ?>
+									<li><a href="<?php echo site_url()."/sign";?>"><i class="fa fa-lock"></i> Login</a></li>
+								<?php } ?>
+								
 
 							</ul>
 						</div>

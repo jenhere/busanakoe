@@ -36,19 +36,16 @@
 					<div class="col-sm-6">
 						<div class="contactinfo">
 							<ul class="nav nav-pills">
-								<li><a href=""><i class="fa fa-phone"></i>085 230 808 158</a></li>
-								<li><a href=""><i class="fa fa-envelope"></i> busanakoe@gmail.com</a></li>
+								<li><a href="#"><i class="fa fa-phone"></i> 085-230-808-158</a></li>
+								<li><a href="#"><i class="fa fa-envelope"></i> busanakoe@gmail.cm</a></li>
 							</ul>
 						</div>
 					</div>
 					<div class="col-sm-6">
 						<div class="social-icons pull-right">
 							<ul class="nav navbar-nav">
-								<li><a href=""><i class="fa fa-facebook"></i></a></li>
-								<li><a href=""><i class="fa fa-twitter"></i></a></li>
-								<li><a href=""><i class="fa fa-linkedin"></i></a></li>
-								<li><a href=""><i class="fa fa-dribbble"></i></a></li>
-								<li><a href=""><i class="fa fa-google-plus"></i></a></li>
+								<li><a href="#"><i class="fa fa-facebook"></i></a></li>
+								<li><a href="#"><i class="fa fa-twitter"></i></a></li>
 							</ul>
 						</div>
 					</div>
@@ -61,17 +58,29 @@
 				<div class="row">
 					<div class="col-sm-4">
 						<div class="logo pull-left">
-							<a href="<?php echo site_url()."/tampil/index";?>" ><img src="<?php echo base_url('assets/images/home/logo.png') ?>" alt="" /></a> 
+							<a href="<?php echo site_url()."/tampil/keVhomePel";?>" ><img src="<?php echo base_url('assets/images/home/logo.png') ?>" alt="" /></a> 
 						</div>
 					</div>
 					<div class="col-sm-8">
 						<div class="shop-menu pull-right">
 							<ul class="nav navbar-nav">
-								<li><a href=""><i class="fa fa-user"></i> Account</a></li>
-								<li><a href=""><i class="fa fa-star"></i> Wishlist</a></li>
-								<li><a href="checkout.html"><i class="fa fa-crosshairs"></i> Checkout</a></li>
-								<li><a href="cart.html" class="active"><i class="fa fa-shopping-cart"></i> Cart</a></li>
-								<li><a href="login.html"><i class="fa fa-lock"></i> Login</a></li>
+								<li><a href="#"><i class="fa fa-star"></i> Wishlist</a></li>
+								<li><a href="<?php echo site_url()."/tampil/keVhomeAdm";?>"><i class="fa fa-crosshairs"></i> Checkout</a></li>
+								<li><?php
+									$text_cart_url  = '<span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>';
+									$text_cart_url .= ' Shopping Cart: '. $this->cart->total_items() .' items';
+									?>
+									<?=anchor(site_url()."/tampil/keCart", $text_cart_url)?>
+										
+								</li>
+								<?php if($this->session->userdata('nama')) { ?>
+									<li><a href="#"><i class="fa fa-user" aria-hidden="true"></i> Hello, <?=$this->session->userdata('nama')?></a></li>
+									<li><a href="<?php echo site_url()."/sign/";?>"><i class="fa fa-lock"></i> Logout</a></li>
+								<?php } else { ?>
+									<li><a href="<?php echo site_url()."/sign";?>"><i class="fa fa-lock"></i> Login</a></li>
+								<?php } ?>
+								
+
 							</ul>
 						</div>
 					</div>
@@ -124,22 +133,18 @@
 				<table class="table table-condensed">
 					<thead>
 						<tr class="cart_menu">
-							<td class="image">Produk</td>
-							<td class="description"></td>
+							<td class="description">Produk</td>
 							<td class="price">Harga</td>
 							<td class="quantity">Jumlah</td>
 							<td class="total">Total</td>
 							<td></td>
 						</tr>
 					</thead>
-					<tbody>
+						<?php foreach ($this->cart->contents() as $items): ?>
 						<tr>
 						<!-- Data dari database-->
-							<td class="cart_product">
-								<a href=""><img src="images/cart/one.png" alt=""></a>
-							</td>
 							<td class="cart_description">
-								<h4><a href="">Hijab putih abu-abu</a></h4>
+								<p><?= $items['nama_produk'] ?></p>
 								<p>Web ID: 1089772</p>
 							</td>
 							<td class="cart_price">
@@ -159,7 +164,8 @@
 								<a class="cart_quantity_delete" href=""><i class="fa fa-times"></i></a>
 							</td>
 						</tr>
-					</tbody>
+						<?php endforeach; ?>
+					
 				</table>
 			</div>
 		</div>

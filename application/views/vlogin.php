@@ -103,15 +103,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-sm-offset-1">
-					<h4>
-					<?php
-						if (isset($message_display)) {
-							echo "<div class='message'>";
-							echo $message_display;
-							echo "</div>";
-						}
-					?></h4>
-					<h4><?=$this->session->flashdata('error')?></h4>
+					<h4 font color="red" ><?=$this->session->flashdata('error')?></h4>
 				</div>
 				<div class="col-sm-4 col-sm-offset-1">
 					<div class="login-form"><!--login form-->

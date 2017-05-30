@@ -5,6 +5,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Sign extends CI_Controller {
 	public function construct(){
 		parent::__construct(); 
+		$this->load->library('cart');
 		// Load form helper library 
 		$this->load->helper('form'); 
 		// Load form validation library 

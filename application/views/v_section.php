@@ -43,9 +43,10 @@
 										</div>
 										<div class="product-overlay">
 											<div class="overlay-content">
-												<h2><?=$product->harga_produk?></h2>
+												<h2>Rp. <?=$product->harga_produk?></h2>
 												<p><?=$product->nama_produk?></p>
-												<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+												<p><a href="#" class="btn btn-default add-to-cart">DETAIL</a></p>
+												<a href="<?php echo site_url()."/tampil/add_to_cart/".$product->kode_produk; ?>" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
 											</div>
 										</div>
 								</div>
