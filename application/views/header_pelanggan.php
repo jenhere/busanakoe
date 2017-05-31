@@ -67,9 +67,7 @@
 								<?php if($this->session->userdata('nama')) { ?>
 									<li><a href="#"><i class="fa fa-user" aria-hidden="true"></i> Hello, <?=$this->session->userdata('nama')?></a></li>
 									<li><a href="<?php echo site_url()."/sign/";?>"><i class="fa fa-lock"></i> Logout</a></li>
-								<?php } else { ?>
-									<li><a href="<?php echo site_url()."/sign";?>"><i class="fa fa-lock"></i> Login</a></li>
-								<?php } ?>
+								<?php } 
 								
 
 							</ul>

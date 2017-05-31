@@ -62,12 +62,9 @@
 									<?=anchor(site_url()."/tampil/keCart", $text_cart_url)?>
 										
 								</li>
-								<?php if($this->session->userdata('nama')) { ?>
-									<li><a href="#"><i class="fa fa-user" aria-hidden="true"></i> Hello, <?=$this->session->userdata('nama')?></a></li>
-									<li><a href="<?php echo site_url()."/sign/";?>"><i class="fa fa-lock"></i> Logout</a></li>
-								<?php } else { ?>
-									<li><a href="<?php echo site_url()."/sign";?>"><i class="fa fa-lock"></i> Login</a></li>
-								<?php } ?>
+									<li><a href="<?php echo site_url()."/sign";?>"><i class="fa fa-lock"></i> Login</a>
+								</li>
+								
 							</ul>
 						</div>
 					</div>
@@ -90,7 +87,7 @@
 						<div class="mainmenu pull-left">
 							<ul class="nav navbar-nav collapse navbar-collapse">
 								<li><a href="<?php echo site_url()."/tampil/";?>" class="active">Home</a></li>
-								<li><a href="#">Contact</a></li>
+								<li><a href= "<?php echo site_url()."/tampil/keContactUs";?>" >Contact Us</a></li>
 							</ul>
 						</div>
 					</div>

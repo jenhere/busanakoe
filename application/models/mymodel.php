@@ -10,9 +10,9 @@ class Mymodel extends CI_Model {
 
     public function masukkan($namatbl, $data){ //bikin akun
         $res = $this->db->insert($namatbl, $data);
-        if (mysql_errno() == 1062) {
+        /*f (mysql_errno() == 1062) {
             print 'Please Insert Unique email';
-        }
+        }*/
         return $res;
     }
     public function ubah($namatbl, $data, $where){

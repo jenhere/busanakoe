@@ -21,9 +21,6 @@
 								</div>
 							</div>
 						</div><!--/category-products-->
-						<div class="shipping text-center"><!--shipping-->
-								<img src="#"  alt="" />
-						</div><!--/shipping-->
 					</div>
 				</div>
 

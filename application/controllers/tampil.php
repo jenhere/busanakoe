@@ -7,6 +7,7 @@ class Tampil extends CI_Controller {
         parent::__construct();
         $this->load->model('');
         $this->load->helper('url');
+        $this->load->helper('email');
         $this->load->library('cart');
     }
 
@@ -197,7 +198,7 @@ class Tampil extends CI_Controller {
 
     public function do_delproduct($kode_produk){
         $where = array('kode_produk' => $kode_produk);
-        $this->mymodel->hapusProduk($where, 'produk');
+        $this->mymodel->hapus($where, 'produk');
         echo "string";
         redirect(site_url('tampil/keDataProduct')); //ganti
 
@@ -344,6 +345,23 @@ class Tampil extends CI_Controller {
             $this->load->view('slider');
             $this->load->view('v_section', $data);
             $this->load->view('footer');
+        }
+    }
+    public function keContactUs(){
+        $this->load->view('contactForm');
+        $this->load->view('footer');
+        }
+    public function kirimPesan(){
+        if(isset($_POST['submit'])){
+            $msg = 'Nama: '. $_POST['nama'] ."\n"
+                .'E-mail: '. $_POST['email'] ."\n"
+                .'No Handphone: '. $_POST['no_hp'] ."\n"
+                .'Komentar: '. $_POST['message'] ."\n"
+            mail('nisrina12154@gmail.com,'Sample Contact us Form',$msg);
+            header("Location: http://localhost/tampil/index.php/login")
+
+        }else{
+            header("Location: http://localhost/busanakoe/index.php/tampil/keContactUs");
         }
     }
 }
