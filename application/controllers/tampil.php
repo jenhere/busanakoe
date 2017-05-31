@@ -14,12 +14,23 @@ class Tampil extends CI_Controller {
     ///TAMPILAN HOME UMUM///
 	public function index()
 	{
+<<<<<<< HEAD
    
         $data['products'] = $this->Mymodel->getAll('produk');
         $this->load->view('Header_umum');
         $this->load->view('Slider');
         $this->load->view('V_section',$data);
         $this->load->view('Footer');
+=======
+
+        $data['products'] = $this->mymodel->getAll('produk');
+        
+
+        $this->load->view('header_umum');
+        $this->load->view('slider');
+        $this->load->view('v_section', $data);
+        $this->load->view('footer');
+>>>>>>> 2e2bfc26d90ecd6eef268156e11a49fdc42a1dbb
 	}
     
     ///TAMPILAN HOME UMUM KATEGORI///
