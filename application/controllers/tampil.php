@@ -12,17 +12,9 @@ class Tampil extends CI_Controller {
 
 	public function index()
 	{
-        /////PAGINATION/////////
-        $this->load->library('pagination');
+
         $data['products'] = $this->mymodel->getAll('produk');
-        $data2 = $this->db->get('produk');
-        /////////PAGINATION////////////
-        $config['base_url'] = 'http://localhost/index.php/tampil/index/';
-        $config['total_rows'] = $data2->num_rows();
-        $config['per_page'] = 6;
-        $this->pagination->initialize($config);
-        echo $this->pagination->create_links();
-        //////END OF PAGINATION/////////////
+        
 
         $this->load->view('header_umum');
         $this->load->view('slider');
