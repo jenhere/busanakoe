@@ -67,7 +67,7 @@
 								<?php if($this->session->userdata('nama')) { ?>
 									<li><a href="#"><i class="fa fa-user" aria-hidden="true"></i> Hello, <?=$this->session->userdata('nama')?></a></li>
 									<li><a href="<?php echo site_url()."/sign/";?>"><i class="fa fa-lock"></i> Logout</a></li>
-								<?php } 
+								<?php }  ?>
 								
 
 							</ul>
@@ -91,7 +91,7 @@
 						</div>
 						<div class="mainmenu pull-left">
 							<ul class="nav navbar-nav collapse navbar-collapse">
-								<li><a href="<?php echo site_url()."/tampil/keVhomePel";?>" class="active">Home</a></li>
+								<li><a href="<?php echo site_url()."/Tampil/keVhomePel";?>" class="active">Home</a></li>
 								<!--<li class="dropdown"><a href="#">Shop<i class="fa fa-angle-down"></i></a>
                                     <ul role="menu" class="sub-menu">
                                         <li><a href="shop.html">Products</a></li>

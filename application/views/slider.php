@@ -20,7 +20,7 @@
 								<div class="col-sm-6">
 									<h1><span>B</span>usanakoe</h1>
 									<p>Online Shop yang menyediakan Busana Muslim Pria, Wanita dan Aksesoris</p>
-									<button type="button" class="btn btn-default get">Get it now</button>
+									<button type="button" class="btn btn-default get">Get it now!</button>
 								</div>
 								<div class="col-sm-6">
 								<img src="" class="girl img-responsive" alt=""/>
@@ -32,7 +32,7 @@
 								<div class="col-sm-6">
 								<h1><span>B</span>usanakoe</h1>
 								<p>Online Shop yang menyediakan Busana Muslim Pria, Wanita dan Anak-anak</p>
-									<button type="button" class="btn btn-default get">Get it now</button>
+									<button type="button" class="btn btn-default get">Get it now!</button>
 								</div>
 								<div class="col-sm-6">
 									<img src="" class="girl img-responsive" alt="" />

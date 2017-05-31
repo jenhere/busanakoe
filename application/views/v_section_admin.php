@@ -36,13 +36,13 @@
 											<img src="<?php echo base_url('upload/'.$product->gambar) ?>" alt="" width="268" height="249" />
 											<h2>Rp. <?=$product->harga_produk?></h2>
 											<p><?=$product->nama_produk?></p>
-											<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+											
 										</div>
 										<div class="product-overlay">
 											<div class="overlay-content">
-												<h2><?=$product->harga_produk?></h2>
+												<h2>Rp. <?=$product->harga_produk?></h2>
 												<p><?=$product->nama_produk?></p>
-												<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+												</a>
 											</div>
 										</div>
 								</div>

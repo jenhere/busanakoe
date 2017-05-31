@@ -17,19 +17,11 @@ class Sign extends CI_Controller {
 	}
 
 	public function index(){
-		$this->load->view('vlogin');
+		$this->load->view('Vlogin');
 	}
 
 	public function do_signup(){
-		// Check validation for user input in SignUp form
-		/*$this->form_validation->set_rules('nama', 'Nama', 'required');
-		$this->form_validation->set_rules('no_hp', 'No_hp', 'required');
-		$this->form_validation->set_rules('email', 'Email', 'required');
-		$this->form_validation->set_rules('sandi', 'Sandi', 'required');
-		if ($this->form_validation->run() == FALSE) {
-			$data['message_display'] = 'Data anda tidak valid!';
-			$this->load->view('vlogin', $data)
-		};*/
+
 		$nama= $_POST['nama'];
 		$no_hp = $_POST['no_hp'];
 		$email = $_POST['email'];
@@ -42,14 +34,14 @@ class Sign extends CI_Controller {
 			'sandi' => $ensandi,//sandi sudah di enkrip
  			'level' => "user"
 			);
-		$res = $this->mymodel->masukkan('pengguna', $data_insert);
+		$res = $this->Mymodel->masukkan('pengguna', $data_insert);
 		if($res>=1){
 			//$data['message_display'] = 'Registrasi Sukses !';
-			redirect('sign');
+			redirect('Sign');
 			exit();
 		}else{
 			//$data['message_display'] = 'Registrasi Gagal !';
-			redirect('sign');
+			redirect('Sign');
 		}
 	}
 
@@ -58,9 +50,9 @@ class Sign extends CI_Controller {
 		$sandi = $_POST['sandi'];
 		$ensandi = sha1(md5($sandi));
 
-		$res = $this->mymodel->getPengguna($email);
+		$res = $this->Mymodel->getPengguna($email);
 		$res = get_object_vars($res);
-		$cek = $this->mymodel->login($email, $ensandi);
+		$cek = $this->Mymodel->login($email, $ensandi);
 		$tes = count($cek);
 
 		if($tes>0){
@@ -76,18 +68,18 @@ class Sign extends CI_Controller {
 			$this->session->set_userdata($data);
 
 			if($level == 'user'){
-				redirect('tampil/keVhomePel/');
+				redirect('Tampil/keVhomePel/');
 			}elseif ($level == 'admin') {
-				redirect('tampil/keVhomeAdm');
+				redirect('Tampil/keVhomeAdm');
 			}
 		}else{
 			$this->session->set_flashdata('error', 'maaf, username atau password ada yang salah!');
-			redirect('sign');
+			redirect('Sign');
 		}
 	}
 
 	public function logout(){
 		$this->session->sess_destroy();
-		$this->load->view('vlogin');
+		$this->load->view('Vlogin');
 	}
 }

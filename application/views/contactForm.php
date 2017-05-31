@@ -60,7 +60,7 @@
         <div class="row">
           <div class="col-sm-4">
             <div class="logo pull-left">
-              <a href="<?php echo site_url()."/tampil/index";?>" ><img src="<?php echo base_url('assets/images/home/logo.png') ?>" alt="" /></a> 
+              <a href="<?php echo site_url()."/Tampil/index";?>" ><img src="<?php echo base_url('assets/images/home/logo.png') ?>" alt="" /></a> 
             </div>
           
           </div>
@@ -82,14 +82,14 @@
             </div>
             <div class="mainmenu pull-left">
               <ul class="nav navbar-nav collapse navbar-collapse">
-                <li><a href="<?php echo site_url()."/tampil/index";?>" class="">Home</a></li>
+                <li><a href="<?php echo site_url()."/Tampil/index";?>" class="">Home</a></li>
                 <!--<li class="dropdown"><a href="#">Shop<i class="fa fa-angle-down"></i></a>
                                     <ul role="menu" class="sub-menu">
                                         <li><a href="shop.html">Products</a></li>
                     <li><a href="product-details.html">Product Details</a></li> 
                     <li><a href="checkout.html">Checkout</a></li> 
                     <li><a href="cart.html">Cart</a></li> 
-                    <li><a href="<?php echo base_url()."index.php/tampil/login";?>">Login</a></li> 
+                    <li><a href="<?php echo base_url()."index.php/Tampil/login";?>">Login</a></li> 
                                     </ul>
                                 </li> -->
                 <li><a href="#">Contact</a></li>
@@ -109,7 +109,7 @@
                 <br>
                 <div class="contact-form">
                     <!-- Form -->
-                    <form id="contact-us" method="post" action=""<?php echo site_url()."/tampil/kirimPesan";?>"">
+                    <form id="contact-us" method="post" action=""<?php echo site_url()."/Tampil/kirimPesan";?>"">
                         <div class="col-xs-2 wow animated slideInLeft" data-wow-delay=".5s"></div>
                         <div class="col-xs-4 wow animated slideInLeft" data-wow-delay=".5s">
                             <input type="text" name="nama" id="nama" required="required" class="form" placeholder="Nama" />

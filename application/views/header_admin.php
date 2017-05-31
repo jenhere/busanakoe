@@ -86,7 +86,6 @@
 										<li><a href="<?php echo site_url()."/tampil/keDataPelanggan";?>">Data Pelanggan </a></li> 
                                     </ul>
                                 </li> 
-								<li><a href="#">Contact</a></li>
 							</ul>
 						</div>
 					</div>
