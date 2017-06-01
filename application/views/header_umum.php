@@ -27,7 +27,7 @@
 						<div class="contactinfo">
 							<ul class="nav nav-pills">
 								<li><a href="#"><i class="fa fa-phone"></i> 085-230-808-158</a></li>
-								<li><a href="#"><i class="fa fa-envelope"></i> busanakoe@gmail.com</a></li>
+								<li><a href="#"><i class="fa fa-envelope"></i> busanakoeshop@gmail.com</a></li>
 							</ul>
 						</div>
 					</div>
@@ -62,8 +62,12 @@
 									<?=anchor(site_url()."/tampil/keCart", $text_cart_url)?>
 										
 								</li>
-									<li><a href="<?php echo site_url()."/sign";?>"><i class="fa fa-lock"></i> Login</a>
-								</li>
+								<?php if($this->session->userdata('logged_in')) { ?>
+								<li><a href="#"><i class="fa fa-user" aria-hidden="true"></i> Hello, <?=$this->session->userdata('nama')?></a></li>
+									<li><a href="<?php echo site_url()."/Sign/logout";?>"><i class="fa fa-lock"></i> Logout</a></li>
+								<?php } else{ ?>
+								<li><a href="<?php echo site_url()."/Sign/";?>"><i class="fa fa-lock"></i> Login</a></li>
+								<?php }  ?>
 								
 							</ul>
 						</div>

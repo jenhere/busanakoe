@@ -54,8 +54,13 @@
 					<div class="col-sm-8">
 						<div class="shop-menu pull-right">
 							<ul class="nav navbar-nav">
-								<li><a href="#"><i class="fa fa-user" aria-hidden="true"></i> Admin</a></li>
-								<li><a href="<?php echo site_url()."/sign/";?>"><i class="fa fa-lock"></i> Logout</a></li>
+								
+								<?php if($this->session->userdata('logged_in')) { ?>
+								<li><a href="#"><i class="fa fa-user" aria-hidden="true"></i> Hello, <?=$this->session->userdata('nama')?></a></li>
+									<li><a href="<?php echo site_url()."/Sign/logout";?>"><i class="fa fa-lock"></i> Logout</a></li>
+								<?php } else{ ?>
+								<li><a href="<?php echo site_url()."/Sign/";?>"><i class="fa fa-lock"></i> Login</a></li>
+								<?php }  ?>
 							</ul>
 						</div>
 					</div>

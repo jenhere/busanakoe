@@ -12,25 +12,12 @@ class Tampil extends CI_Controller {
     }
 
     ///TAMPILAN HOME UMUM///
-	public function index()
-	{
-<<<<<<< HEAD
-   
+	public function index(){
         $data['products'] = $this->Mymodel->getAll('produk');
         $this->load->view('Header_umum');
         $this->load->view('Slider');
         $this->load->view('V_section',$data);
         $this->load->view('Footer');
-=======
-
-        $data['products'] = $this->mymodel->getAll('produk');
-        
-
-        $this->load->view('header_umum');
-        $this->load->view('slider');
-        $this->load->view('v_section', $data);
-        $this->load->view('footer');
->>>>>>> 2e2bfc26d90ecd6eef268156e11a49fdc42a1dbb
 	}
     
     ///TAMPILAN HOME UMUM KATEGORI///
@@ -42,28 +29,28 @@ class Tampil extends CI_Controller {
         $this->load->view('Footer');
     }
 
-    ///TAMPILAN HOME PELANGGANKATEGORI///
-    public function keVhomekat_pel($ktgr){
-        if(!$this->session->userdata('email')){
-            $this->session->set_flashdata('error', 'Maaf, anda belum login');
-            header("Location: http://localhost/tampil/index.php/login");
-        }else{
-        $data['products'] = $this->Mymodel->getProd($ktgr);
-        $this->load->view('Header_pelanggan');
-        $this->load->view('Slider');
-        $this->load->view('V_section', $data);
-        $this->load->view('Footer');
-        }
-    }
 
     ///TAMPILAN HOME CART///
     public function keCart(){
-        if(!$this->session->userdata('email')){
+        if(!$this->session->userdata('logged_in')){
             $this->session->set_flashdata('error', 'Maaf, anda belum login');
-            header("Location: http://localhost/busanakoe/index.php/Sign/");
+            redirect(site_url()."/Sign/");
         }else{
             $this->load->view('Cart');
         }
+    }
+    public function keRincianOrder($no_invoice){
+        if(!$this->session->userdata('logged_in')){
+            $this->session->set_flashdata('error', 'Maaf, anda belum login');
+            redirect(site_url()."/Sign/");
+        }
+
+        $data['tagihan'] = $this->Mymodel->getInvoice($no_invoice);
+        $this->load->view('RincianOrder', $data );
+    }
+
+    public function keKonfirmasi(){
+        $this->load->view('KonfirmasiPembayaran');
     }
 
     ///MENAMBAHKAN KE CART///
@@ -91,11 +78,44 @@ class Tampil extends CI_Controller {
         redirect(site_url()."/Tampil/keCart");
     }
 
+    /////////PESAN//////////
+    public function do_order(){
+        $all = $this->Mymodel->getAll('invoice');
+        $total_row = $this->Mymodel->getNumRow('invoice');
+
+        $no_invoice = $total_row + 1;
+         $nama = $_POST['nama'];
+         $email = $this->session->userdata('email');
+         $no_telp = $_POST['no_telp'];
+         $alamat = $_POST['alamat'];
+         $metode = $_POST['metode'];
+         $total = $_POST['total'];
+         $status = 'unpaid';
+
+         $data_insert = array(
+            'no_invoice' => $no_invoice,
+            'email' => $email,
+            'nama' => $nama,
+            'no_telp' => $no_telp,
+            'alamat' => $alamat,
+            'metode' => $metode,
+            'total' => $total,
+            'status' => $status
+            );
+        $res = $this->Mymodel->masukkan('invoice', $data_insert);
+        if($res>=1){
+            redirect(site_url()."/Tampil/keRincianOrder/".$no_invoice);
+            exit();
+        }else{
+            echo "<h2>Order gagal</h2>";
+        }
+    }
+
     ///TAMPILAN HOME ADMIN/// 
     public function keVhomeAdm(){
-        if(!$this->session->userdata('email')){
+        if(!$this->session->userdata('logged_in')){
             $this->session->set_flashdata('error', 'Maaf, anda belum login');
-            header("Location: http://localhost/sign/index.php/login");
+            redirect(site_url()."/Sign/");
         }else{
         $data['products'] = $this->Mymodel->getAll('produk');
         $this->load->view('Header_admin');
@@ -107,9 +127,9 @@ class Tampil extends CI_Controller {
 
      ///TAMPILAN HOME ADMIN KATEGORI///    
     public function keVhomekat_admin($ktgr){
-        if(!$this->session->userdata('email')){
+        if(!$this->session->userdata('logged_in')){
             $this->session->set_flashdata('error', 'Maaf, anda belum login');
-            header("Location: http://localhost/tampil/index.php/login");
+            redirect(site_url()."/Sign/");
         }
       
         $data['products'] = $this->Mymodel->getProd($ktgr);
@@ -121,9 +141,9 @@ class Tampil extends CI_Controller {
 
     ///TAMPILAN FORM INPUT PRODUK///  
     public function keInputProduct(){ 
-        if(!$this->session->userdata('email')){
+        if(!$this->session->userdata('logged_in')){
             $this->session->set_flashdata('error', 'Maaf, anda belum login');
-            header("Location: http://localhost/Tampil/index.php/login");
+            redirect(site_url()."/Sign/");
         }
         $this->load->view('Header_admin');
         $this->load->view('V_section_admin_menu');
@@ -134,9 +154,9 @@ class Tampil extends CI_Controller {
     ///MEMASUKKAN PRODUK///  
     public function do_addproduct(){
 
-        if(!$this->session->userdata('email')){
+        if(!$this->session->userdata('logged_in')){
             $this->session->set_flashdata('error', 'Maaf, anda belum login');
-            header("Location: http://localhost/Tampil/index.php/login");
+            redirect(site_url()."/Sign/");
         }
         $target = "upload/".basename($_FILES['uploadimage']['name']);
 
@@ -160,7 +180,7 @@ class Tampil extends CI_Controller {
         $res = $this->Mymodel->masukkan('produk', $data_insert);
 
         if($res>=1 && move_uploaded_file($_FILES['uploadimage']['tmp_name'] , $target)){
-            header("Location: http://localhost/busanakoe/index.php/Tampil/keInputProduct");
+            redirect(site_url()."/Tampil/keInputProduct");
             exit();
         }else{
             echo "<h2>Tambah produk gagal</h2>";
@@ -177,9 +197,9 @@ class Tampil extends CI_Controller {
     }
 
     public function kePemesanan(){
-        if(!$this->session->userdata('email')){
+        if(!$this->session->userdata('logged_in')){
             $this->session->set_flashdata('error', 'Maaf, anda belum login');
-            header("Location: http://localhost/Tampil/index.php/login");
+            redirect(site_url()."/Sign/");
         }
         $this->load->view('Header_admin');
         $this->load->view('V_section_admin_menu');
@@ -187,9 +207,9 @@ class Tampil extends CI_Controller {
         $this->load->view('Footer');
     }
      public function keDataProduct(){
-        if(!$this->session->userdata('email')){
+        if(!$this->session->userdata('logged_in')){
             $this->session->set_flashdata('error', 'Maaf, anda belum login');
-            header("Location: http://localhost/Tampil/index.php/login");
+            redirect(site_url()."/Sign/");
         }
         $data['products'] = $this->Mymodel->getAll('produk');
 
@@ -200,41 +220,32 @@ class Tampil extends CI_Controller {
     }
 
     public function keDataPelanggan(){
-        if(!$this->session->userdata('email')){
+        if(!$this->session->userdata('logged_in')){
             $this->session->set_flashdata('error', 'Maaf, anda belum login');
-            header("Location: http://localhost/tampil/index.php/login");
-        }else{
-
-        $this->load->library('pagination');
-        $where = array('level' => 'user' );
+            redirect(site_url()."/Sign/");
+        }else{       
         $data['products'] = $this->Mymodel->getWhere('pengguna', $where);
-        $data2 = $this->db->get('pengguna');
-        $config['base_url'] = 'http://localhost/index.php/Tampil/index/';
-        $config['total_rows'] = $data2->num_rows();
-        $config['per_page'] = 6;
-        $this->pagination->initialize($config);
-        echo $this->pagination->create_links();
 
 
-        $this->load->view('header_admin');
-        $this->load->view('v_section_admin_menu');
-        $this->load->view('v_section_admin_dataPel', $data);
-        $this->load->view('footer');
+        $this->load->view('Header_admin');
+        $this->load->view('V_section_admin_menu');
+        $this->load->view('V_section_admin_dataPel', $data);
+        $this->load->view('Footer');
         }
     }
     public function do_delpel($email){
 
         $where = array('email' => $email);
-        $this->mymodel->hapus($where, 'pelanggan');
+        $this->Mymodel->hapus($where, 'pelanggan');
         echo "string";
         redirect(site_url('tampil/keDataPelanggan'));
 
     }
 
     public function keFormUpdate($kode){
-        if(!$this->session->userdata('email')){
+        if(!$this->session->userdata('logged_in')){
             $this->session->set_flashdata('error', 'Maaf, anda belum login');
-            header("Location: http://localhost/tampil/index.php/login");
+            redirect(site_url()."/Sign/");
         }
         $prod = $this->Mymodel->getProd_kode("where kode_produk = '$kode'");
         $data = array(
@@ -274,7 +285,7 @@ class Tampil extends CI_Controller {
         $res = $this->Mymodel->ubah('produk', $data_update, $where);
 
         if($res>=1 && move_uploaded_file($_FILES['uploadimage']['tmp_name'] , $target)){
-            header("Location: http://localhost/busanakoe/index.php/Tampil/keDataProduct");
+            redirect(site_url()."/Tampil/keDataProduct");
             exit();
         }else{
             echo "<h2>Update produk gagal</h2>";
@@ -283,12 +294,12 @@ class Tampil extends CI_Controller {
 
     //TAMPILAN PELANGGAN
     public function keVhomePel(){
-        if(!$this->session->userdata('email')){
+        if(!$this->session->userdata('logged_in')){
             $this->session->set_flashdata('error', 'Maaf, anda belum login');
-            header("Location: http://localhost/tampil/index.php/login");
+            redirect(site_url()."/Sign/");
         }else{
             $data['products'] = $this->Mymodel->getAll('produk');
-            $this->load->view('Header_pelanggan');
+            $this->load->view('Header_umum');
             $this->load->view('Slider');
             $this->load->view('V_section', $data);
             $this->load->view('Footer');

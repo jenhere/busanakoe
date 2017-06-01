@@ -52,6 +52,16 @@ class Mymodel extends CI_Model {
     		return array();
     	}
     }
+
+    public function getNumRow($tabel){
+        $hasil = $this->db->get($tabel);
+        if($hasil->num_rows() > 0){
+            return $hasil->num_rows();
+        } else{
+            return array();
+        }
+    }
+
     public function hapus($where,$table){
         $this->db->where($where);
         $this->db->delete($table);
@@ -60,5 +70,11 @@ class Mymodel extends CI_Model {
     public function getPengguna($where){
         $this->db->where('email', $where);
         return $this->db->get('pengguna')->row();
+    }
+
+    ////mengambil invoice////
+    public function getInvoice($where){
+        $this->db->where('no_invoice', $where);
+        return $this->db->get('invoice')->result();
     }
 }

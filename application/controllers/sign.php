@@ -60,8 +60,8 @@ class Sign extends CI_Controller {
 				'nama' => $res['nama'],
 				'no_hp' => $res['no_hp'],
 				'email' => $res['email'],
-				'sandi' => $res['sandi'],
-				'level' => $res['level']
+				'level' => $res['level'],
+				'logged_in' => TRUE
 			);
 			$level = $data['level'];
 
@@ -80,6 +80,7 @@ class Sign extends CI_Controller {
 
 	public function logout(){
 		$this->session->sess_destroy();
+		$this->session->set_userdata(array('nama' => '', 'no_hp' => '', 'email' => '', 'is_logged_in' => ''));
 		$this->load->view('Vlogin');
 	}
 }

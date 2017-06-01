@@ -94,14 +94,14 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-sm-offset-1">
-					<h4 font color="red" ><?=$this->session->flashdata('error')?></h4>
+					<h4 style="color: red" ><?=$this->session->flashdata('error')?></h4>
 				</div>
 				<div class="col-sm-4 col-sm-offset-1">
 					<div class="login-form"><!--login form-->
 						<h2>Masuk ke Busanakoe</h2>
 						<form method="POST" action="<?php echo site_url('sign/do_signin')?>">
-							<input type="email" name="email" placeholder="Alamat Email" />
-							<input type="password" name="sandi" placeholder="Kata Sandi" />
+							<input type="email" name="email" placeholder="Alamat Email" required />
+							<input type="password" name="sandi" placeholder="Kata Sandi" required />
 							<button type="submit" class="btn btn-default">Masuk</button>
 						</form>
 					</div><!--/login form-->
@@ -114,10 +114,10 @@
 					<div class="signup-form"><!--sign up form-->
 						<h2>Buat Akun Baru</h2>
 						<form method="POST" action="<?php echo site_url('sign/do_signup')?>">
-							<input type="text" name="nama" placeholder="Nama Lengkap" size="50" />
-							<input type="text" name="no_hp" placeholder="Nomer Handphone" size="13" />
-							<input type="email" name="email" placeholder="Alamat E-mail" size="50" />
-							<input type="password" name="sandi" placeholder="Kata Sandi" size="50" />
+							<input type="text" name="nama" placeholder="Nama Lengkap" size="50" required />
+							<input type="text" name="no_hp" placeholder="Nomer Handphone" size="13" required />
+							<input type="email" name="email" placeholder="Alamat E-mail" size="50" required />
+							<input type="password" name="sandi" placeholder="Kata Sandi" size="50" required />
 							<button type="submit" class="btn btn-default">Buat Akun</button>
 						</form>
 					</div><!--/sign up form-->

@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>Cart | Busanakoe</title>
+    <title>Konfirmasi | Busanakoe</title>
     <!--Bootstrap core CSS-->
     <link href="<?php echo base_url('assets/css/bootstrap.min.css') ?>" rel="stylesheet"> 
     <!--Custom CSS-->
@@ -15,7 +15,6 @@
     <link href="<?php echo base_url('assets/css/animate.css') ?>" rel="stylesheet">
 	<link href="<?php echo base_url('assets/css/main.css') ?>" rel="stylesheet">
 	<link href="<?php echo base_url('assets/css/responsive.css') ?>" rel="stylesheet">
-
 
 </head><!--/head-->
 
@@ -101,113 +100,34 @@
 			</div>
 		</div><!--/header-bottom-->
 	</header><!--/header-->
-<?php $total = 0; ?>
-	<section id="cart_items">
-		<div class="container">
-			<div class="breadcrumbs">
-				<ol class="breadcrumb">
-				  <li><a href="#">Home</a></li>
-				  <li class="active">Shopping Cart</li>
-				</ol>
-			</div>
-			<div class="table-responsive cart_info">
-				<table class="table table-condensed">
-					<thead>
-						<tr class="cart_menu">
-							<td class="description">Produk</td>
-							<td class="price">Harga</td>
-							<td class="quantity">Jumlah</td>
-							<td class="total">Total</td>
-							<td></td>
-						</tr					</thead>
-						<?php 
-						foreach ($this->cart->contents() as $items): 
-							$subtotal = $items['qty'] * $items['price'];
-                            $total += $subtotal;
 
-							?>
-						<tr>
-						<!-- Data dari database-->
-							<td class="cart_description">
-								<h4><?= $items['name'] ?></h4>
-							</td>
-							<td class="cart_price">
-								<p>Rp. <?php echo $this->cart->format_number($items['price']); ?></p>
-							</td>
-							<td class="cart_quantity">
-								<div class="cart_quantity_button">
-									<a class="cart_quantity_up" href=""> + </a>
-									<input class="cart_quantity_input" type="text" name="quantity" value="<?= $items['qty'] ?>" autocomplete="off" size="2">
-									<a class="cart_quantity_down" href=""> - </a>
-								</div>
-							</td>
-							<td class="cart_total">
-								<p class="cart_total_price">Rp. <?php echo $this->cart->format_number($items['subtotal']); ?></p>
-							</td>
-							<td class="cart_delete">
-								<a class="cart_quantity_delete" href="<?php echo site_url()."/tampil/clear_cart_id/".$items['id']?>"><i class="fa fa-times"></i></a>
-							</td>
-						</tr>
-						<?php endforeach; ?>
-					<tfoot>
-                        <tr>
-                            <td class="cart_total" colspan="4" align="right"><p class="cart_total_price">Total</p></td>
-                            <td class="cart_total" ><p class="cart_total_price"><?php echo $this->cart->format_number($total); ?></p></td>
-                        </tr>
-                    </tfoot>
-				</table>
-			</div>
-		</div>
-	</section> <!--/#cart_items-->
-	<center><h1>PENGIRIMAN DAN PEMBAYARAN</center>
+	<center><h1>Konfirmasi Pembayaran</center>
 	<!--Form PEMBAYARAN-->
 	
 		<div class="container signup-form" style="margin: 10px;">
-			<form role="#" action="<?php echo site_url('Tampil/do_order')?>" method="post" enctype="multipart/form-data" >
+			<form role="#" action="<?php echo site_url('Tampil/do_konfirmasi')?>" method="post" enctype="multipart/form-data" >
 				<form>
 				<div class="col-md-4"></div>
 				<div class="col-md-7">
 					<div class="form-group"> 
-						<label for="full_name_id" class="control-label" >Nama Penerima</label>
-						<input type="text" class="form-control" id="penerima" name="nama" placeholder="Masukkan nama Penerima">
+						<label for="full_name_id" class="control-label">Nama Pengirim</label>
+						<input type="text" class="form-control" id="pengirim" name="nama" placeholder="Masukkan nama Pengirim" required>
 					</div>	
 					<div class="form-group"> 
-						<label for="full_name_id" class="control-label">Nomer Telepon</label>
-						<input type="text" class="form-control" id="telepon" name="no_telp" placeholder="Masukkan nomer Telepon">
+						<label for="full_name_id" class="control-label">No. Invoice</label>
+						<input type="text" class="form-control" id="invoice" name="no_invoice" placeholder="Masukkan nomer Invoice" required>
 					</div>	
 					<div class="form-group"> 
-						<label for="full_name_id" class="control-label">Alamat</label>
-						<input type="text" class="form-control" id="alamat" name="alamat" placeholder="Masukkan nomer Telepon">
-					</div>									
-						
-					<div class="form-group"> 
-						<label for="state_id" class="control-label">Kota</label>
-						<select name="kota" class="form-control" id="state_id">
-							<option>--Silahkan pilih--</option>
-							<option>Denpasar</option>
-							<option>Singaraja</option>
-							<option>Jimbaran</option>
-							<option>Surabaya</option>
-						</select>					
-					</div>
-
-					<div class="form-group"> 
-						<label for="state_id" class="control-label">Metode Pembayaran</label>
-						<select name="metode" class="form-control" id="state_id">
-							<option>--Silahkan pilih--</option>
-							<option>JNE</option>
-							<option>TIKI</option>
-							<option>POS Indonesia</option>
-						</select>					
-					</div>		
+						<label for="full_name_id" class="control-label">Bank Pengirim</label>
+						<input type="text" class="form-control" id="bankPengirim" name="bank" placeholder="Masukkan bank Pengirim" required>
+					</div>	
+						<div class="form-group"> 
+						<label for="full_name_id" class="control-label">Rekening asal</label>
+						<input type="text" class="form-control" id="rekening" name="rekening" placeholder="Masukkan rekening" required>
+					</div>								
 	
 					<div class="form-group"> 
-						<label for="full_name_id" class="control-label">Total Pembayaran (Rp.)</label>
-						<input type="text" class="form-control" id="alamat" name="total" value="<?php echo $total ?>" readonly>
-					</div>	
-
-					<div class="form-group"> 
-						<button type="submit" class=" btn btn-primary">Submit</button>
+						<button type="submit" class="btn btn-primary">Submit</button>
 					</div>     
 				</div>
 			</form>	
@@ -257,6 +177,8 @@
 							<h2>Tentang kami</h2> 
 							<p style="color: #a3a3a3">Perum Jadi Pesona XVII no 7, Denpasar Bali, Indonesia</p>
 							<p style="color: #a3a3a3">Busanakoe@gmail.com</p>
+
+
 						</div>
 					</div>
 					
@@ -274,6 +196,9 @@
 		</div>
 		
 	</footer><!--/Footer-->
+	
+
+
 
 	<script src="<?php echo base_url('assets/js/jquery.js') ?>"></script>
 	<script src="<?php echo base_url('assets/js/bootstrap.min.js') ?>"></script>

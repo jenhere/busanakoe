@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>Cart | Busanakoe</title>
+    <title>Rincian Order| Busanakoe</title>
     <!--Bootstrap core CSS-->
     <link href="<?php echo base_url('assets/css/bootstrap.min.css') ?>" rel="stylesheet"> 
     <!--Custom CSS-->
@@ -15,7 +15,6 @@
     <link href="<?php echo base_url('assets/css/animate.css') ?>" rel="stylesheet">
 	<link href="<?php echo base_url('assets/css/main.css') ?>" rel="stylesheet">
 	<link href="<?php echo base_url('assets/css/responsive.css') ?>" rel="stylesheet">
-
 
 </head><!--/head-->
 
@@ -55,6 +54,7 @@
 					<div class="col-sm-8">
 						<div class="shop-menu pull-right">
 							<ul class="nav navbar-nav">
+								<li><a href="#"><i class="fa fa-star"></i> Wishlist</a></li>
 								<li><a href="<?php echo site_url()."/tampil/keVhomeAdm";?>"><i class="fa fa-crosshairs"></i> Checkout</a></li>
 								<li><?php
 									$text_cart_url  = '<span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>';
@@ -101,114 +101,58 @@
 			</div>
 		</div><!--/header-bottom-->
 	</header><!--/header-->
-<?php $total = 0; ?>
-	<section id="cart_items">
-		<div class="container">
-			<div class="breadcrumbs">
-				<ol class="breadcrumb">
-				  <li><a href="#">Home</a></li>
-				  <li class="active">Shopping Cart</li>
-				</ol>
-			</div>
-			<div class="table-responsive cart_info">
-				<table class="table table-condensed">
-					<thead>
-						<tr class="cart_menu">
-							<td class="description">Produk</td>
-							<td class="price">Harga</td>
-							<td class="quantity">Jumlah</td>
-							<td class="total">Total</td>
-							<td></td>
-						</tr					</thead>
-						<?php 
-						foreach ($this->cart->contents() as $items): 
-							$subtotal = $items['qty'] * $items['price'];
-                            $total += $subtotal;
 
-							?>
-						<tr>
-						<!-- Data dari database-->
-							<td class="cart_description">
-								<h4><?= $items['name'] ?></h4>
-							</td>
-							<td class="cart_price">
-								<p>Rp. <?php echo $this->cart->format_number($items['price']); ?></p>
-							</td>
-							<td class="cart_quantity">
-								<div class="cart_quantity_button">
-									<a class="cart_quantity_up" href=""> + </a>
-									<input class="cart_quantity_input" type="text" name="quantity" value="<?= $items['qty'] ?>" autocomplete="off" size="2">
-									<a class="cart_quantity_down" href=""> - </a>
-								</div>
-							</td>
-							<td class="cart_total">
-								<p class="cart_total_price">Rp. <?php echo $this->cart->format_number($items['subtotal']); ?></p>
-							</td>
-							<td class="cart_delete">
-								<a class="cart_quantity_delete" href="<?php echo site_url()."/tampil/clear_cart_id/".$items['id']?>"><i class="fa fa-times"></i></a>
-							</td>
-						</tr>
-						<?php endforeach; ?>
-					<tfoot>
-                        <tr>
-                            <td class="cart_total" colspan="4" align="right"><p class="cart_total_price">Total</p></td>
-                            <td class="cart_total" ><p class="cart_total_price"><?php echo $this->cart->format_number($total); ?></p></td>
-                        </tr>
-                    </tfoot>
-				</table>
-			</div>
-		</div>
-	</section> <!--/#cart_items-->
-	<center><h1>PENGIRIMAN DAN PEMBAYARAN</center>
+	<center><h6>BERIKUT RINCIAN PEMESANAN ANDA:</h6></center>
 	<!--Form PEMBAYARAN-->
 	
 		<div class="container signup-form" style="margin: 10px;">
-			<form role="#" action="<?php echo site_url('Tampil/do_order')?>" method="post" enctype="multipart/form-data" >
+		<?php foreach ($tagihan as $t) {
+				 ?>
+			<form role="#" action="<?php echo site_url('Tampil/keKonfirmasi')?>" method="post" enctype="multipart/form-data" >
+
 				<form>
+				
 				<div class="col-md-4"></div>
 				<div class="col-md-7">
 					<div class="form-group"> 
-						<label for="full_name_id" class="control-label" >Nama Penerima</label>
-						<input type="text" class="form-control" id="penerima" name="nama" placeholder="Masukkan nama Penerima">
+						<label for="full_name_id" class="control-label">Nomer Invoice</label>
+						<input type="text" class="form-control" id="invoice" name="invoice" value="<?=$t->no_invoice; ?>" readonly>
 					</div>	
+				
 					<div class="form-group"> 
-						<label for="full_name_id" class="control-label">Nomer Telepon</label>
-						<input type="text" class="form-control" id="telepon" name="no_telp" placeholder="Masukkan nomer Telepon">
+						<label for="full_name_id" class="control-label">Nama Penerima</label>
+						<input type="text" class="form-control" id="Penerima" name="penerima" value="<?=$t->nama; ?>" readonly>
 					</div>	
+
 					<div class="form-group"> 
-						<label for="full_name_id" class="control-label">Alamat</label>
-						<input type="text" class="form-control" id="alamat" name="alamat" placeholder="Masukkan nomer Telepon">
-					</div>									
-						
+						<label for="full_name_id" class="control-label">Nomor Telepon Penerima</label>
+						<input type="text" class="form-control" id="No_Telp_Penerima" name="No_Telp_Penerima" value="<?=$t->no_telp; ?>" readonly>
+					</div>	
+
 					<div class="form-group"> 
-						<label for="state_id" class="control-label">Kota</label>
-						<select name="kota" class="form-control" id="state_id">
-							<option>--Silahkan pilih--</option>
-							<option>Denpasar</option>
-							<option>Singaraja</option>
-							<option>Jimbaran</option>
-							<option>Surabaya</option>
-						</select>					
+						<label for="full_name_id" class="control-label">Alamat Penerima</label>
+						<input type="text" class="form-control" id="alamatPenerima" name="alamatPenerima" value="<?=$t->alamat; ?>" readonly>
+					</div>	
+
+					<div class="form-group"> 
+						<label for="full_name_id" class="control-label">Total Pembelian</label>
+						<input type="text" class="form-control" id="totalPembelian" name="totalPembelain" value="<?=$t->total; ?>" readonly>
 					</div>
-
+					<?php }; ?>				
+					<center>
+					<br>
+					<br>
+					<h4>Silahkan melakukan transfer sejumlah total biaya ke:  </h4>
+					<br>
+					<p><h4>Rekeing Bank Mandiri</h4></p>
+					<p><h4>0345 128 098</h4></p>
+					<br>
+					<p>a.n. Ahmad Solihin </p>
 					<div class="form-group"> 
-						<label for="state_id" class="control-label">Metode Pembayaran</label>
-						<select name="metode" class="form-control" id="state_id">
-							<option>--Silahkan pilih--</option>
-							<option>JNE</option>
-							<option>TIKI</option>
-							<option>POS Indonesia</option>
-						</select>					
-					</div>		
-	
-					<div class="form-group"> 
-						<label for="full_name_id" class="control-label">Total Pembayaran (Rp.)</label>
-						<input type="text" class="form-control" id="alamat" name="total" value="<?php echo $total ?>" readonly>
-					</div>	
-
-					<div class="form-group"> 
-						<button type="submit" class=" btn btn-primary">Submit</button>
-					</div>     
+					<button type="submit" class="btn btn-primary">Konfirmasi Pembayaran</button>
+					
+					</div>   
+					</center>  
 				</div>
 			</form>	
 		</form>
@@ -257,6 +201,8 @@
 							<h2>Tentang kami</h2> 
 							<p style="color: #a3a3a3">Perum Jadi Pesona XVII no 7, Denpasar Bali, Indonesia</p>
 							<p style="color: #a3a3a3">Busanakoe@gmail.com</p>
+
+
 						</div>
 					</div>
 					
@@ -274,6 +220,9 @@
 		</div>
 		
 	</footer><!--/Footer-->
+	
+
+
 
 	<script src="<?php echo base_url('assets/js/jquery.js') ?>"></script>
 	<script src="<?php echo base_url('assets/js/bootstrap.min.js') ?>"></script>

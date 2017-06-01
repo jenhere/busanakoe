@@ -60,9 +60,29 @@
         <div class="row">
           <div class="col-sm-4">
             <div class="logo pull-left">
-              <a href="<?php echo site_url()."/Tampil/index";?>" ><img src="<?php echo base_url('assets/images/home/logo.png') ?>" alt="" /></a> 
+              <a href="<?php echo site_url()."/tampil/index";?>" ><img src="<?php echo base_url('assets/images/home/logo.png') ?>" alt="" /></a> 
             </div>
-          
+          </div>
+          <div class="col-sm-8">
+            <div class="shop-menu pull-right">
+              <ul class="nav navbar-nav">
+                <li><a href="#"><i class="fa fa-crosshairs"></i> Checkout</a></li>
+                <li><?php
+                  $text_cart_url  = '<span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>';
+                  $text_cart_url .= ' Shopping Cart: '. $this->cart->total_items() .' items';
+                  ?>
+                  <?=anchor(site_url()."/tampil/keCart", $text_cart_url)?>
+                    
+                </li>
+                <?php if($this->session->userdata('logged_in')) { ?>
+                <li><a href="#"><i class="fa fa-user" aria-hidden="true"></i> Hello, <?=$this->session->userdata('nama')?></a></li>
+                  <li><a href="<?php echo site_url()."/Sign/logout";?>"><i class="fa fa-lock"></i> Logout</a></li>
+                <?php } else{ ?>
+                <li><a href="<?php echo site_url()."/Sign/";?>"><i class="fa fa-lock"></i> Login</a></li>
+                <?php }  ?>
+                
+              </ul>
+            </div>
           </div>
         </div>
       </div>
@@ -83,16 +103,7 @@
             <div class="mainmenu pull-left">
               <ul class="nav navbar-nav collapse navbar-collapse">
                 <li><a href="<?php echo site_url()."/Tampil/index";?>" class="">Home</a></li>
-                <!--<li class="dropdown"><a href="#">Shop<i class="fa fa-angle-down"></i></a>
-                                    <ul role="menu" class="sub-menu">
-                                        <li><a href="shop.html">Products</a></li>
-                    <li><a href="product-details.html">Product Details</a></li> 
-                    <li><a href="checkout.html">Checkout</a></li> 
-                    <li><a href="cart.html">Cart</a></li> 
-                    <li><a href="<?php echo base_url()."index.php/Tampil/login";?>">Login</a></li> 
-                                    </ul>
-                                </li> -->
-                <li><a href="#">Contact</a></li>
+                <li><a href="#" class="active">Contact Us</a></li>
               </ul>
             </div>
           </div>
