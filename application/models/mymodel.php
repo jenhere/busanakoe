@@ -15,6 +15,11 @@ class Mymodel extends CI_Model {
         }*/
         return $res;
     }
+
+    public function ubah_status($where){
+        $res = $this->db->query('update invoice SET status = "paid" where no_invoice = "'.$where.'"');
+        return $res;
+    }
     public function ubah($namatbl, $data, $where){
         $res = $this->db->update($namatbl, $data, $where);
         return $res;

@@ -134,6 +134,16 @@ class Tampil extends CI_Controller {
         }
     }
 
+    public function do_confirm($no_invoice){
+        $res = $this->Mymodel->ubah_status($no_invoice);
+        if($res>=1){
+            redirect(site_url()."/Tampil/kePemesanan/");
+            exit();
+        }else{
+            echo "<h2>confirm gagal</h2>";
+        }
+    }
+
     ///TAMPILAN HOME ADMIN/// 
     public function keVhomeAdm(){
         if(!$this->session->userdata('logged_in')){
@@ -224,9 +234,12 @@ class Tampil extends CI_Controller {
             $this->session->set_flashdata('error', 'Maaf, anda belum login');
             redirect(site_url()."/Sign/");
         }
+
+        $data['orders'] = $this->Mymodel->getAll('invoice');
+
         $this->load->view('Header_admin');
         $this->load->view('V_section_admin_menu');
-        $this->load->view('V_section_admin_pemesanan');
+        $this->load->view('V_section_admin_pemesanan', $data);
         $this->load->view('Footer');
     }
      public function keDataProduct(){
@@ -247,23 +260,20 @@ class Tampil extends CI_Controller {
             $this->session->set_flashdata('error', 'Maaf, anda belum login');
             redirect(site_url()."/Sign/");
         }else{       
-        $data['products'] = $this->Mymodel->getWhere('pengguna', $where);
-
-
+        $data['products'] = $this->Mymodel->getAll('pengguna');
         $this->load->view('Header_admin');
         $this->load->view('V_section_admin_menu');
         $this->load->view('V_section_admin_dataPel', $data);
         $this->load->view('Footer');
         }
     }
-    public function do_delpel($email){
-
+    /*public function do_delpel($email){
         $where = array('email' => $email);
-        $this->Mymodel->hapus($where, 'pelanggan');
+        $this->Mymodel->hapus($email, 'pelanggan');
         echo "string";
         redirect(site_url('tampil/keDataPelanggan'));
 
-    }
+    }*/
 
     public function keFormUpdate($kode){
         if(!$this->session->userdata('logged_in')){
