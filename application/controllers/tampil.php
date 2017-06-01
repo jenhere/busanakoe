@@ -53,6 +53,29 @@ class Tampil extends CI_Controller {
         $this->load->view('KonfirmasiPembayaran');
     }
 
+    public function do_konfirmasi(){
+
+        $no_invoice = $_POST['no_invoice'];
+        $email = $this->session->userdata('email');
+        $nama = $_POST['nama']; 
+        $bank = $_POST['bank'];
+        $rekening = $_POST['rekening'];
+
+         $data_insert = array(
+            'no_invoice' => $no_invoice,
+            'email' => $email,
+            'nama' => $nama,
+            'bank' => $bank,
+            'rekening' => $rekening
+            );
+        $res = $this->Mymodel->masukkan('konfirmasi', $data_insert);
+        if($res>=1){
+            redirect(site_url()."/Tampil/keRincianOrder/".$no_invoice);
+            exit();
+        }else{
+            echo "<h2>Order gagal</h2>";
+        }
+    }
     ///MENAMBAHKAN KE CART///
     public function add_to_cart($kode_produk){
         $product = $this->Mymodel->find($kode_produk);
